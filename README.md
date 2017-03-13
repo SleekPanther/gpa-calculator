@@ -9,10 +9,14 @@
 - given a current GPA (with credits & hours), determine new gpa by adding new classes
 - gui to add multiple classes
 - button or `enter key` to calculate
+- 
 - `Class` object, add class to `GpaCalculator` object
   - fields for credits, gpa hours, grade, letter grade, ect
   - letter grade based on `Map` with cutoffs
   - error checking for ranges
+    - `isValidGrade()`
+  - Class.validateAll()  
+  calls multiple validation methods??
 - save inputs to txt file  
 somehow make it hidden/unreadable
 - sort by best gpa? / contributing gpa
