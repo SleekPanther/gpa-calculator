@@ -7,13 +7,14 @@
 ##Feature Goals
 - calc gpa for any number of classes per semester
 - given a current GPA (with credits & hours), determine new gpa by adding new classes
+
 - gui to add multiple classes
-  - `addNewClass()`
-    - dynamically update gui to add boxes
-  - `updateClass()`
-  - `moveUp()` / `moveDown()` no drag & drop, but arrows to reorder
-- button or `enter key` to calculate
-- `calculateGpa()`    fired on button press
+  - `addNewClass(Scene/Pane whereItemAppearsOnScreen)`
+    - dynamically update gui to add new boxes
+  - `updateClass()` ? maybe unnecessary
+  - `moveUp()` / `moveDown()` maybe drag & drop, but arrows to reorder
+    - must fix ArrayList of classes
+- `calculateGpa()`    button / `Enter key`
   - just get values from existing text fields
   - checkboxes to **include class in calculation**
   - loop through ArrayList of classes & call `hasValidValues()`
@@ -23,8 +24,8 @@
   - bind text field value to objecy's field
   - fields for credits, gpa hours, grade, letter grade, ect
   - letter grade based on `Map` with cutoffs
-  - `hasValidValues()`  
-  calls multiple validation methods??
+    - switch statements / else if() for descending grades
+  - `hasValidValues()` calls multiple validation methods
     - `validateAndPrintErrors()`
     - `isNumeric()` ==> pass argument & do exception handling
       - print error if error found
