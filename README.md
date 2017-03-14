@@ -1,5 +1,5 @@
 # GPA Calculator
-
+A GPA calculator in Java attempting to use the **Model View Controller** (MVC) pattern.
 
 ##Features
 
@@ -36,3 +36,9 @@ somehow make it hidden/unreadable
 - sort by best gpa? / contributing gpa
 - desired gpa & calculate for current classes
 - 2nd tab for formula explanation
+
+## References
+- [Youtube - MVC Java Tutorial](https://www.youtube.com/watch?v=dTVVa2gfht8)
+- [StackOverflow - Applying MVC With JavaFx](http://stackoverflow.com/a/32343342)
+- [Youtube - JavaFX Software Tutorial: Calculator (MVC)](https://www.youtube.com/watch?v=y1ZaBalVZic) long
+- [Youtube - JavaFX Software: Alarm Clock (MVC)](https://www.youtube.com/watch?v=wIpgGpmFUjA)
