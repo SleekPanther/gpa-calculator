@@ -1,10 +1,10 @@
 # GPA Calculator
 A GPA calculator in Java attempting to use the **Model View Controller** (MVC) pattern.
 
-##Features
+## Features
+ 
 
-
-##Feature Goals
+## Feature Goals
 - calc gpa for any number of classes per semester
 - given a current GPA (with credits & hours), determine new gpa by adding new classes
 
