@@ -43,6 +43,7 @@ somehow make it hidden/unreadable
 ## References
 - [Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) Great video, provided the main motivation to use MVC, but it uses **Java swing** and I had to adapt it to **JavaFX**
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
+  - [Handling JavaFX Events: Processing Events | JavaFX 2 Tutorials and Documentation](https://docs.oracle.com/javafx/2/events/processing.htm)
   -  
   - **Dead ends**
   - [JavaFX separating event handling from controller class - Stack Overflow](http://stackoverflow.com/q/36663988) not enough details
