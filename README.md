@@ -18,11 +18,14 @@ A GPA calculator in Java attempting to use the **Model View Controller** (MVC) p
   - just get values from existing text fields
   - checkboxes to **include class in calculation**
   - loop through ArrayList of classes & call `hasValidValues()`
-- `Class` object, add class to `GpaCalculator` object
+- `` `Class` object, add class to `GpaCalculator` object`` 
+- **`Class` object extends Pane somehow**
   - **gui object & txt fields part of it**  
   fields CAN have invalid numbers in them, but not used & err message printed
   - bind text field value to objecy's field
   - fields for credits, gpa hours, grade, letter grade, ect
+  - **ALSO CONVERT BETWEEN 0-100 scale  
+  toggle between gpa & numerical (event with radio button?) **
   - letter grade based on `Map` with cutoffs
     - switch statements / else if() for descending grades
   - `hasValidValues()` calls multiple validation methods
