@@ -43,5 +43,7 @@ somehow make it hidden/unreadable
 ## References
 - [Youtube - MVC Java Tutorial](https://www.youtube.com/watch?v=dTVVa2gfht8)
 - [StackOverflow - Applying MVC With JavaFx](http://stackoverflow.com/a/32343342)
+- [Stack Overflow - javafx: Separate EventHandler and gui code](http://stackoverflow.com/a/35659515)
+- Less Helpful
 - [Youtube - JavaFX Software Tutorial: Calculator (MVC)](https://www.youtube.com/watch?v=y1ZaBalVZic) long
 - [Youtube - JavaFX Software: Alarm Clock (MVC)](https://www.youtube.com/watch?v=wIpgGpmFUjA)
