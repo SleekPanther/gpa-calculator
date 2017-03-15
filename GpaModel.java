@@ -7,7 +7,7 @@ public class GpaModel {
 
 
 	private double gpaOverall;
-	//classes?
+	//list of classes?
 
 	public GpaModel() {
 		System.out.println("model constructor");
@@ -18,6 +18,8 @@ public class GpaModel {
 		total=11;
 		//for(){} all classes passed in
 		gpaOverall=total/5;
+		
+		gpaOverall=System.nanoTime();
 	}
 
 	public double getGpaOverall(){

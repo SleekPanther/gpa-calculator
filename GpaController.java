@@ -9,55 +9,30 @@ public class GpaController {
 		this.view=view;
 		this.model=model;
 		
-		view.addCalcButtonHandler(new CalcButtonHandler());
+		addViewEventHandlers();
 	}
-	
-	class CalcButtonHandler implements EventHandler<ActionEvent> {
-        @Override
-        public void handle(ActionEvent e) {
-        	view.setGpaOverall(System.nanoTime());
-        }
-    }
 
-//	class ButtonHandler2 implements EventHandler<ActionEvent>{
-//	//	@Override
-//	//	public void handle(Event event) {
-//	//		view.setGpaOverall(2);
-//	//	}
-//
-//		@Override
-//		public void handle(ActionEvent arg0) {
-//			view.setGpaOverall(System.nanoTime());
-//		}
-//
-//	}
+	private void addViewEventHandlers(){
+		view.addCalcButtonHandler(new CalcButtonHandler());
+		view.addResetButtonHandler(new ResetButtonHandler());
+	}
+
+
+	class CalcButtonHandler implements EventHandler<ActionEvent> {
+		@Override
+		public void handle(ActionEvent e) {
+			model.calcGpaOverall();
+			view.setGpaOverall(model.getGpaOverall());
+		}
+
+		//do more complex calutations in method? to extract try/catch
+	}
+
+	class ResetButtonHandler implements EventHandler<ActionEvent> {
+		@Override
+		public void handle(ActionEvent e) {
+			view.setGpaOverall("0.0");
+		}
+	}
 
 }
-
-
-
-
-
-// class calcOverallGpaButtonListener implements ActionListener{
-
-// 	public void actionPerformed(ActionEvent e) {
-// 		// try{
-// 		// 	firstNumber = theView.getFirstNumber();
-// 		// 	secondNumber = theView.getSecondNumber();
-
-// 		// 	theModel.addTwoNumbers(firstNumber, secondNumber);
-
-// 		// 	theView.setCalcSolution(theModel.getCalculationValue());
-// 		// }
-
-// 		// catch(NumberFormatException ex){
-
-// 			System.out.println(ex);
-
-// 			view.setGpaOverall(2);
-
-// 		// }
-
-// 	}
-
-// }

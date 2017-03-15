@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 import java.util.*;
 
 public class GpaView extends Application {
-	private int windowHeight = 500;
-	private int windowWidth = 300;
+	private int windowHeight = 600;
+	private int windowWidth = 500;
 
 	private Stage primaryStage;
 	private Scene mainScene;
@@ -22,6 +22,8 @@ public class GpaView extends Application {
 	private HBox calcPane;
 		private Button calcGpaOverallButton;
 		private Label gpaOverallLabel;
+		private String gpaOverallDefaultText = "0.0";
+		private Button resetButton;
 
 
 	public GpaView(){
@@ -48,8 +50,9 @@ public class GpaView extends Application {
 	private void setUpGui(){
 		calcPane=new HBox();
 		calcGpaOverallButton = new Button("Calculate Gpa");
-		gpaOverallLabel = new Label("00");
-		calcPane.getChildren().addAll(calcGpaOverallButton, gpaOverallLabel);
+		gpaOverallLabel = new Label(gpaOverallDefaultText);
+		resetButton=new Button("Reset All");
+		calcPane.getChildren().addAll(calcGpaOverallButton, gpaOverallLabel, resetButton);
 
 		mainPane = new VBox();
 		mainPane.getChildren().addAll(calcPane);
@@ -61,26 +64,14 @@ public class GpaView extends Application {
 		primaryStage.setHeight(windowHeight);
 		primaryStage.setWidth(windowWidth);
 		primaryStage.setResizable(false);
-
-		//createButtonHandlers();
 	}
 	
-	public void addCalcButtonHandler(EventHandler<ActionEvent> buttonHandler){
-		//calcGpaOverallButton.addActionListener(buttonListener);
-		//calcGpaOverallButton.addEventHandler(arg0, arg1);
-		calcGpaOverallButton.setOnAction(buttonHandler);
-		//calcGpaOverallButton
+	public void addCalcButtonHandler(EventHandler<ActionEvent> calcButtonHandler){
+		calcGpaOverallButton.setOnAction(calcButtonHandler);
 	}
 
-	private void createButtonHandlers2(){
-		//calcGpaOverallButton.addActionListener(new ButtonHandler2(this)) ;
-		// calcGpaOverallButton.setOnAction(new ButtonHandler(this)) ;
-
-		// calcGpaOverallButton.setOnAction(new EventHandler<ActionEvent>() {
-		//     @Override public void handle(ActionEvent e) {
-		//     	setGpaOverall("Changed");
-		//     }
-		// });
+	public void addResetButtonHandler(EventHandler<ActionEvent> resetButtonHandler){
+		resetButton.setOnAction(resetButtonHandler);
 	}
 
 	public void setGpaOverall(String gpa){
