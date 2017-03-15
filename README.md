@@ -41,7 +41,17 @@ somehow make it hidden/unreadable
 - 2nd tab for formula explanation
 
 ## References
-- [Youtube - MVC Java Tutorial](https://www.youtube.com/watch?v=dTVVa2gfht8)
+- [Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) Great video, provided the main motivation to use MVC, but it uses **Java swing** and I had to adapt it to **JavaFX**
+  - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
+  -  
+  - **Dead ends**
+  - [JavaFX separating event handling from controller class - Stack Overflow](http://stackoverflow.com/q/36663988) not enough details
+  - [javafx multiple buttons to same handler - Stack Overflow](http://stackoverflow.com/a/25410169) initial thougts, but didn't pan out
+  - [Multiple Buttons To Same Action Listener](http://www.dreamincode.net/forums/topic/234827-multiple-buttons-to-same-action-listener/#entry1357573) right idea, but using ActionListener instead of EventHandler
+  - [JavaFX 8 Event Handling Examples](http://code.makery.ch/blog/javafx-8-event-handling-examples/) JavaFX, but too complex
+  - [4 Working with Event Handlers](https://docs.oracle.com/javafx/2/events/handlers.htm) `addEventHandler()`
+  - [Difference between setOnXXX() method and addEventHandler() JavaFx - Stack Overflow](http://stackoverflow.com/q/37821796)
+  - [Handling Events with Listeners - vaadin](https://vaadin.com/docs/-/part/framework/application/application-events.html) anonymous inner classes
 - [StackOverflow - Applying MVC With JavaFx](http://stackoverflow.com/a/32343342)
 - [Stack Overflow - javafx: Separate EventHandler and gui code](http://stackoverflow.com/a/35659515)
 - Less Helpful
