@@ -2,7 +2,7 @@
 A GPA calculator in Java attempting to use the **Model View Controller** (MVC) pattern.
 
 ## Features
- 
+
 
 ## Feature Goals
 - calc gpa for any number of classes per semester
@@ -18,7 +18,7 @@ A GPA calculator in Java attempting to use the **Model View Controller** (MVC) p
   - just get values from existing text fields
   - checkboxes to **include class in calculation**
   - loop through ArrayList of classes & call `hasValidValues()`
-- `` `Class` object, add class to `GpaCalculator` object`` 
+- ~~`Class` object, add class to `GpaCalculator` object~~
 - **`Class` object extends Pane somehow**
   - **gui object & txt fields part of it**  
   fields CAN have invalid numbers in them, but not used & err message printed
