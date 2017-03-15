@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 // import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.stage.*;
+
+import java.awt.event.ActionListener;
 import java.util.*;
 
 public class GpaView extends Application {
@@ -60,11 +62,20 @@ public class GpaView extends Application {
 		primaryStage.setWidth(windowWidth);
 		primaryStage.setResizable(false);
 
-		createButtonHandlers();
+		//createButtonHandlers();
+	}
+	
+	public void addCalcButtonHandler(EventHandler<ActionEvent> buttonHandler){
+		//calcGpaOverallButton.addActionListener(buttonListener);
+		//calcGpaOverallButton.addEventHandler(arg0, arg1);
+		calcGpaOverallButton.setOnAction(buttonHandler);
+		//calcGpaOverallButton
 	}
 
-	private void createButtonHandlers(){
-		calcGpaOverallButton.setOnAction(new ButtonHandler(this)) ;
+	private void createButtonHandlers2(){
+		//calcGpaOverallButton.addActionListener(new ButtonHandler2(this)) ;
+		// calcGpaOverallButton.setOnAction(new ButtonHandler(this)) ;
+
 		// calcGpaOverallButton.setOnAction(new EventHandler<ActionEvent>() {
 		//     @Override public void handle(ActionEvent e) {
 		//     	setGpaOverall("Changed");

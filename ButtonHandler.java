@@ -1,6 +1,6 @@
 import javafx.event.*;
 
-public class ButtonHandler implements  EventHandler<ActionEvent>{
+public class ButtonHandler implements EventHandler<ActionEvent>{
 	private GpaView view;
 
 	public ButtonHandler(GpaView view){
@@ -14,7 +14,7 @@ public class ButtonHandler implements  EventHandler<ActionEvent>{
 
 	@Override
 	public void handle(ActionEvent arg0) {
-		view.setGpaOverall(2);
+		view.setGpaOverall(System.nanoTime());
 	}
 
 }
