@@ -74,13 +74,14 @@ public class GpaView extends Application {
 		resetButton.setOnAction(resetButtonHandler);
 	}
 
+
 	public void setGpaOverall(String gpa){
 		gpaOverallLabel.setText(gpa);
 	}
 
 	//set text passing a number
 	public void setGpaOverall(double gpa){
-		setGpaOverall(gpa+"");
+		setGpaOverall(gpa+"");		//convert to string
 	}
 
 }

@@ -13,7 +13,7 @@ public class GpaModel {
 		System.out.println("model constructor");
 	}
 
-	public void calcGpaOverall(){
+	public void calcGpaOverall(){	//throws exception?
 		double total=0;
 		total=11;
 		//for(){} all classes passed in
