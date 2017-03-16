@@ -1,0 +1,10 @@
+/*------------------View CSS---------------------*/
+
+#button1{
+	-fx-background-color: grey;
+	
+}
+
+.buttons{
+	-fx-text-fill: lime;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="GpaController">
+	<!-- package/path to the controller -->
+
+	<Label text="Label"/>
+	<Button text="Btn1" fx:id="button1" styleClass="buttons" onAction="#handleBtn1" />
+
+</VBox>
