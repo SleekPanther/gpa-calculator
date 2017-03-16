@@ -41,7 +41,15 @@ somehow make it hidden/unreadable
 - 2nd tab for formula explanation
 
 ## References
-- [Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) Great video, provided the main motivation to use MVC, but it uses **Java swing** and I had to adapt it to **JavaFX**
+- [JavaFX Java GUI Tutorial - 31 - Introduction to FXML](https://youtu.be/K7BOH-Ll8_g) Bucky FXML
+  - [JavaFX Java GUI Tutorial - 32 - Controllers in FXML](https://www.youtube.com/watch?v=LMdjhuYSrqg)
+  - [031_fxml Github code](https://github.com/buckyroberts/Source-Code-from-Tutorials/tree/master/JavaFX/031_fxml) Bucky Github sample
+- [Is @FXML needed for every declaration? - Stack Overflow](http://stackoverflow.com/a/30213067) `@FXML` annotation
+  - [JavaFX FXML Controller Example - Java Code Geeks](https://examples.javacodegeeks.com/desktop-java/javafx/fxml/javafx-fxml-controller-example/) more on @FXML
+- [Setting stylesheets declaratively in FXML - Stack Overflow](http://stackoverflow.com/a/14697202) **WORKS!**
+  - [How to add a CSS stylesheet in FXML - Stack Overflow](http://stackoverflow.com/a/28123426) complex
+- [Set multiple styleClass values - Stack Overflow](http://stackoverflow.com/a/25564361) css class (style**C**lass must be **C**apitalize)
+- [Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) **Great video**, provided the main motivation to use MVC, but it uses **Java swing** and I had to adapt it to **JavaFX**
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
   - [Handling JavaFX Events: Processing Events | JavaFX 2 Tutorials and Documentation](https://docs.oracle.com/javafx/2/events/processing.htm)
   -  
