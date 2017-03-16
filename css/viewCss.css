@@ -1,10 +1,26 @@
 /*------------------View CSS---------------------*/
+#mainPane{
+	-fx-background-color: orange;
+	-fx-pref-width: 400;
+	-fx-min-width: 400;
+	-fx-max-width: 400;
+}
 
-#button1{
-	-fx-background-color: grey;
+#classesPane{
+	-fx-background-color: yellow;
 	
 }
 
+#calcGpaOverallButton{
+	
+}
+
+#gpaOverallLabel{
+	-fx-pref-width: 150;
+	-fx-min-width: 150;
+	-fx-max-width: 150;
+}
+
 .buttons{
-	-fx-text-fill: lime;
+	-fx-text-fill: blue;
 }

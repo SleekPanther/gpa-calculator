@@ -5,12 +5,11 @@ public class GpaModel {
 	private double gpaLowerBound = 0;
 	//more limits on valid inputs: grades, 0-100 etc
 
-
 	private double gpaOverall;
 	//list of classes?
 
 	public GpaModel() {
-		System.out.println("model constructor");
+		
 	}
 
 	public void calcGpaOverall(){	//throws exception?

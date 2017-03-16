@@ -2,10 +2,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="GpaController">
-	<!-- package/path to the controller -->
+<VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
 
-	<Label text="Label"/>
-	<Button text="Btn1" fx:id="button1" styleClass="buttons" onAction="#handleBtn1" />
+	<VBox fx:id="classesPane">
+		<HBox fx:id="class1Pane">
+			<TextField fx:id="class1Gpa" />
+		</HBox>
+	</VBox>
+
+	<HBox fx:id="calcPane">
+		<Button text="Calculate Overall GPA" fx:id="calcGpaOverallButton" styleClass="buttons" onAction="#handleCalcGpaOverallButton" />
+		<Label text="0.0" fx:id="gpaOverallLabel" />
+		<Button text="Reset" fx:id="resetButton" styleClass="buttons" onAction="#handleResetButton" />
+	</HBox>
 
 </VBox>
