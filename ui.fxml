@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
+
+	<VBox fx:id="classesPane">
+		<HBox fx:id="class1Pane">
+			<TextField fx:id="class1Gpa" />
+		</HBox>
+	</VBox>
+
+	<HBox fx:id="calcPane">
+		<Button text="Calculate Overall GPA" fx:id="calcGpaOverallButton" styleClass="buttons" onAction="#handleCalcGpaOverallButton" />
+		<Label text="0.0" fx:id="gpaOverallLabel" />
+		<Button text="Reset" fx:id="resetButton" styleClass="buttons" onAction="#handleResetButton" />
+	</HBox>
+
+</VBox>
