@@ -46,9 +46,15 @@ somehow make it hidden/unreadable
   - [031_fxml Github code](https://github.com/buckyroberts/Source-Code-from-Tutorials/tree/master/JavaFX/031_fxml) Bucky Github sample
 - [Is @FXML needed for every declaration? - Stack Overflow](http://stackoverflow.com/a/30213067) `@FXML` annotation
   - [JavaFX FXML Controller Example - Java Code Geeks](https://examples.javacodegeeks.com/desktop-java/javafx/fxml/javafx-fxml-controller-example/) more on @FXML
+  - [Introduction to FXML](https://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html#fxml_annotation) javadox `@FXML`
+- [JavaFX FXML controller - constructor vs initialize method - Stack Overflow](http://stackoverflow.com/a/34785707) 
 - [Setting stylesheets declaratively in FXML - Stack Overflow](http://stackoverflow.com/a/14697202) **WORKS!**
   - [How to add a CSS stylesheet in FXML - Stack Overflow](http://stackoverflow.com/a/28123426) complex
 - [Set multiple styleClass values - Stack Overflow](http://stackoverflow.com/a/25564361) css class (style**C**lass must be **C**apitalize)
+- [Connecting SceneBuilder edited FXML to Java code](http://code.makery.ch/blog/javafx-8-event-handling-examples/) javafx FXML event handling
+- [JavaFX css width - Stack Overflow](http://stackoverflow.com/a/29096857) `-fx-pref-width`, `-fx-pref-height`,  `-fx-max-width`
+  - **[JavaFX CSS Reference](https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html) `Ctrl+F` -fx-pref-width**
+-  
 - [Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) **Great video**, provided the main motivation to use MVC, but it uses **Java swing** and I had to adapt it to **JavaFX**
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
   - [Handling JavaFX Events: Processing Events | JavaFX 2 Tutorials and Documentation](https://docs.oracle.com/javafx/2/events/processing.htm)
