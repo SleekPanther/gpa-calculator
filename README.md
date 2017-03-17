@@ -72,3 +72,6 @@ somehow make it hidden/unreadable
 - Less Helpful
 - [Youtube - JavaFX Software Tutorial: Calculator (MVC)](https://www.youtube.com/watch?v=y1ZaBalVZic) long
 - [Youtube - JavaFX Software: Alarm Clock (MVC)](https://www.youtube.com/watch?v=wIpgGpmFUjA)
+
+
+https://gjf2a.blogspot.com/2015/01/dynamically-adding-javafx-controls.html
