@@ -52,7 +52,7 @@ somehow make it hidden/unreadable
   - [How to add a CSS stylesheet in FXML - Stack Overflow](http://stackoverflow.com/a/28123426) complex
 - [Set multiple styleClass values - Stack Overflow](http://stackoverflow.com/a/25564361) css class (style**C**lass must be **C**apitalize)
 - [Connecting SceneBuilder edited FXML to Java code](http://code.makery.ch/blog/javafx-8-event-handling-examples/) javafx FXML event handling
-- [JavaFX css width - Stack Overflow](http://stackoverflow.com/a/29096857) `-fx-pref-width`, `-fx-pref-height`,  `-fx-max-width`
+- [JavaFX css width - Stack Overflow](http://stackoverflow.com/a/29096857) `-fx-pref-width`, `-fx-min-width`,  `-fx-max-width`
   - **[JavaFX CSS Reference](https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html) `Ctrl+F` -fx-pref-width**
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
