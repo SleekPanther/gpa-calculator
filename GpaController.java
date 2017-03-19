@@ -20,6 +20,11 @@ public class GpaController {
 			@FXML private Button resetButton;
 
 	@FXML
+	public void handleClass1Gpa(ActionEvent event){
+		gpaOverallLabel.setText( class1Gpa.getText() );
+	}
+
+	@FXML
 	public void handleCalcGpaOverallButton(ActionEvent event){
 		model.calcGpaOverall();	//pass in classes to calc
 		gpaOverallLabel.setText(numToText( model.getGpaOverall() ));

@@ -6,7 +6,7 @@
 
 	<VBox fx:id="classesPane">
 		<HBox fx:id="class1Pane">
-			<TextField fx:id="class1Gpa" />
+			<TextField fx:id="class1Gpa" onAction="#handleClass1Gpa" />
 		</HBox>
 	</VBox>
 
