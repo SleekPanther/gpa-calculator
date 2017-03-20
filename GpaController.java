@@ -1,13 +1,11 @@
-import javafx.fxml.Initializable;
 import java.net.URL;
-
-import javafx.fxml.FXML;
+import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.event.*;
 import java.util.*;
 
-public class GpaController {
+public class GpaController implements Initializable {
 	private GpaModel model = new GpaModel();
 
 	//don't need panes??
@@ -18,6 +16,14 @@ public class GpaController {
 			@FXML private Button calcGpaOverallButton;
 			@FXML private Label gpaOverallLabel;
 			@FXML private Button resetButton;
+	//
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		class1Gpa.textProperty().addListener((observable, oldValue, newValue) -> {
+			gpaOverallLabel.setText( class1Gpa.getText() );
+		});
+	}
 
 	@FXML
 	public void handleClass1Gpa(ActionEvent event){
