@@ -47,6 +47,9 @@ somehow make it hidden/unreadable
 - [Is @FXML needed for every declaration? - Stack Overflow](http://stackoverflow.com/a/30213067) `@FXML` annotation
   - [JavaFX FXML Controller Example - Java Code Geeks](https://examples.javacodegeeks.com/desktop-java/javafx/fxml/javafx-fxml-controller-example/) more on @FXML
   - [Introduction to FXML](https://docs.oracle.com/javafx/2/api/javafx/fxml/doc-files/introduction_to_fxml.html#fxml_annotation) javadox `@FXML`
+- [JavaFX 2 Event Handlers and Change Listeners](http://code.makery.ch/blog/javafx-2-event-handlers-and-change-listeners/#textbox-events) `TextField` events (long way)
+  - [How get an event when text in a TextField changes? JavaFX - Stack Overflow](http://stackoverflow.com/a/30161053) Lambda Expressions
+  - [Value Change Listener for JavaFX's TextField - Stack Overflow](http://stackoverflow.com/a/30161053) more lambda
 - [JavaFX FXML controller - constructor vs initialize method - Stack Overflow](http://stackoverflow.com/a/34785707) 
 - [Setting stylesheets declaratively in FXML - Stack Overflow](http://stackoverflow.com/a/14697202) **WORKS!**
   - [How to add a CSS stylesheet in FXML - Stack Overflow](http://stackoverflow.com/a/28123426) complex
