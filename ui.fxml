@@ -4,11 +4,32 @@
 
 <VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
 
-	<VBox fx:id="classesPane">
-		<HBox fx:id="class1Pane">
-			<TextField fx:id="class1Gpa" onAction="#handleClass1Gpa"  />
-		</HBox>
-	</VBox>
+<!-- change to grid pane so headers line up
+gridPane borders
+quality points label auto updated -->
+	<GridPane fx:id="classesPane" styleClass="grid">
+		<Label text="Class Title" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+		<Label text="Grade" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+		<Label text="Credits" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+		<Label text="Quality Points" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+		<VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
+			<TextField fx:id="class1Title" />
+			<Label fx:id="class1TitleError" styleClass="errorLabel" text="class1TitleError" />
+		</VBox>
+		<VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+			<TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
+			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" />
+		</VBox>
+		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
+			<TextField fx:id="class1Credits" />
+			<Label fx:id="class1CreditsError" styleClass="errorLabel" text="class1CreditsError" />
+		</VBox>
+		<VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
+			<Label fx:id="class1Points" text="pts" />
+			<Label fx:id="class1PointsError" styleClass="errorLabel" text="class1PointsError" />
+		</VBox>
+	</GridPane>
 
 	<HBox fx:id="calcPane">
 		<Button text="Calculate Overall GPA" fx:id="calcGpaOverallButton" styleClass="buttons" onAction="#handleCalcGpaOverallButton" />

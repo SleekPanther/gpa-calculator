@@ -10,8 +10,8 @@ public class GpaController implements Initializable {
 
 	//don't need panes??
 	// @FXML private VBox mainPane;
-	// 	@FXML private VBox classesPane;
-		@FXML private TextField class1Gpa;
+	// 	@FXML private GridPane classesPane;
+		@FXML private TextField class1Grade;
 	// 	@FXML private VBox calcPane;
 			@FXML private Button calcGpaOverallButton;
 			@FXML private Label gpaOverallLabel;
@@ -20,14 +20,14 @@ public class GpaController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		class1Gpa.textProperty().addListener((observable, oldValue, newValue) -> {
-			gpaOverallLabel.setText( class1Gpa.getText() );
+		class1Grade.textProperty().addListener((observable, oldValue, newValue) -> {
+			gpaOverallLabel.setText( class1Grade.getText() );
 		});
 	}
 
 	@FXML
-	public void handleClass1Gpa(ActionEvent event){
-		gpaOverallLabel.setText( class1Gpa.getText() );
+	public void handleClass1Grade(ActionEvent event){
+		gpaOverallLabel.setText( class1Grade.getText() );
 	}
 
 	@FXML

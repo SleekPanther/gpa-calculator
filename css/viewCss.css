@@ -1,9 +1,25 @@
 /*------------------View CSS---------------------*/
 #mainPane{
 	-fx-background-color: orange;
-	-fx-pref-width: 400;
-	-fx-min-width: 400;
-	-fx-max-width: 400;
+	-fx-pref-width: 600;
+	-fx-min-width: 600;
+	-fx-max-width: 600;
+}
+
+.grid {
+    -fx-background-color: white;
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 5.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+
+	
+}
+.grid > * {
+	-fx-border-color: black;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
 }
 
 #classesPane{
