@@ -58,6 +58,10 @@ somehow make it hidden/unreadable
 - [JavaFX css width - Stack Overflow](http://stackoverflow.com/a/29096857) `-fx-pref-width`, `-fx-min-width`,  `-fx-max-width`
   - **[JavaFX CSS Reference](https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html) `Ctrl+F` -fx-pref-width**
 - [Java-Buddy: Create GridPane using FXML](https://java-buddy.blogspot.com/2012/05/create-gridpane-using-fxml.html) `FXML GridPane`
+- [RequestFocus() in TextField doesn't work](http://stackoverflow.com/a/38900429) Run after `initialize()` is done:  
+also via lambda: `Platform.runLater(()->class1Grade.requestFocus());`
+- [JavaFx TextField focus lost formatting](http://stackoverflow.com/a/25975373) ChangeListener for `onBlur()` (leave `TextField`)  
+but only for TextField, not another label
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
