@@ -2,6 +2,7 @@ import java.net.URL;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Text;
 import javafx.event.*;
 import java.util.*;
 
@@ -11,6 +12,7 @@ public class GpaController implements Initializable {
 	//don't need panes??
 	// @FXML private VBox mainPane;
 	// 	@FXML private GridPane classesPane;
+		@FXML private TextField class1Title;
 		@FXML private TextField class1Grade;
 	// 	@FXML private VBox calcPane;
 			@FXML private Button calcGpaOverallButton;
@@ -26,8 +28,16 @@ public class GpaController implements Initializable {
 	}
 
 	@FXML
+	public void handleClass1Title(ActionEvent event){
+		gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
+		System.out.println(event);
+		System.out.println(event.getSource() );
+		//Text a = new Text
+	}
+
+	@FXML
 	public void handleClass1Grade(ActionEvent event){
-		gpaOverallLabel.setText( class1Grade.getText() );
+		gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
 	}
 
 	@FXML
