@@ -10,17 +10,6 @@
 	
 }
 
-.grid Text{
-	-fx-text-alignment: center;
-	/* must fix labels --> Text*/
-}
-
-.grid Text{
-// .grid > VBox > Text{
-	-fx-text-alignment: right;
-	/* must fix labels --> Text*/
-}
-
 .grid > VBox{
 	-fx-pref-width: 150;
 	-fx-min-width: 150;

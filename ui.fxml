@@ -17,7 +17,7 @@ quality points label auto updated -->
 		<Label text="Quality Points" GridPane.rowIndex="0" GridPane.columnIndex="4" />
 
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
-			<Text text="Class 1" />
+			<Text fx:id="" text="Class 1" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
 			<TextField fx:id="class1Title" onAction="#handleClass1Title" />
