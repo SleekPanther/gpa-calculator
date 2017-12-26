@@ -11,30 +11,35 @@ quality points label auto updated -->
 		
 	<GridPane fx:id="classesPane" styleClass="grid">
 		<!-- change labels to Text -->
-		<Label text="Class Title" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+		<Label text="Title (optional)" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 		<Label text="Grade" GridPane.rowIndex="0" GridPane.columnIndex="2" />
 		<Label text="Credits" GridPane.rowIndex="0" GridPane.columnIndex="3" />
 		<Label text="Quality Points" GridPane.rowIndex="0" GridPane.columnIndex="4" />
 
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
-			<Text fx:id="" text="Class 1" />
+			<Text styleClass="title" text="Class 1" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
 			<TextField fx:id="class1Title" onAction="#handleClass1Title" />
-			<Label fx:id="class1TitleError" styleClass="errorLabel" text="class1TitleError" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
 			<TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
 			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
-			<TextField fx:id="class1Credits" />
+			<TextField fx:id="class1Credits" onAction="#handleClass1Credits" />
 			<Label fx:id="class1CreditsError" styleClass="errorLabel" text="class1CreditsError" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="4">
 			<Label fx:id="class1Points" text="pts" />
 		</VBox>
 	</GridPane>
+
+	<HBox fx:id="existingGPA">
+		<Label text="Current GPA (optional)"/>
+		<TextField fx:id="currentGPA" />
+		<Label fx:id="currentGPAError" styleClass="errorLabel" />
+	</HBox>
 
 	<HBox fx:id="calcPane">
 		<Button text="Calculate Overall GPA" fx:id="calcGpaOverallButton" styleClass="buttons" onAction="#handleCalcGpaOverallButton" />
