@@ -3,6 +3,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
 <VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
 
 <!-- change to grid pane so headers line up
@@ -23,8 +32,9 @@ quality points label auto updated -->
 			<TextField fx:id="class1Title" onAction="#handleClass1Title" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
-			<TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
-			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" />
+			<ComboBox fx:id="class1Grade" />
+			<!-- <TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
+			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" /> -->
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
 			<TextField fx:id="class1Credits" onAction="#handleClass1Credits" />

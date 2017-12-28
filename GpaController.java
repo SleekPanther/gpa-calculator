@@ -6,15 +6,18 @@ import javafx.scene.text.Text;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.*;
 import javafx.event.*;
 import java.util.*;
 
 public class GpaController implements Initializable {
 	private GpaModel model = new GpaModel();
 
+	private ArrayList<String> grades = new ArrayList<String>();
+
 	// @FXML private VBox mainPane;
 	// 	@FXML private GridPane classesPane;
-		@FXML private TextField class1Grade;
+		@FXML private ComboBox<String> class1Grade;
 		@FXML private Label class1GradeError;
 
 		@FXML private TextField class1Credits;
@@ -29,13 +32,31 @@ public class GpaController implements Initializable {
 			@FXML private Button resetButton;
 	//
 
+	public GpaController(){
+		grades.add("A+");
+		grades.add("A");
+		grades.add("A-");
+		grades.add("B+");
+		grades.add("B");
+		grades.add("B-");
+		grades.add("C+");
+		grades.add("C");
+		grades.add("C-");
+		grades.add("D+");
+		grades.add("D-");
+		grades.add("F");
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		class1Grade.textProperty().addListener((observable, oldValue, newValue) -> {
-			gpaOverallLabel.setText( class1Grade.getText() );
-		});
+		class1Grade.setItems(FXCollections.observableArrayList(grades));
+		class1Grade.setValue(grades.get(0));
+		
+		// class1Grade.textProperty().addListener((observable, oldValue, newValue) -> {
+		// 	gpaOverallLabel.setText( class1Grade.getText() );
+		// });
 
-		class1Grade.focusedProperty().addListener(new TextFieldListener(class1Grade, class1GradeError));
+		// class1Grade.focusedProperty().addListener(new TextFieldListener(class1Grade, class1GradeError));
 		class1Credits.focusedProperty().addListener(new TextFieldListener(class1Credits, class1CreditsError));
 		currentGPA.focusedProperty().addListener(new TextFieldListener(currentGPA, currentGPAError, "currentGPA"));
 
@@ -45,12 +66,12 @@ public class GpaController implements Initializable {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				class1Grade.requestFocus();
+//				class1Grade.requestFocus();
 			}
 		});
 	}
 	public void test(){
-		class1Grade.requestFocus();
+//		class1Grade.requestFocus();
 	}
 
 	@FXML
