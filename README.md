@@ -5,27 +5,23 @@ A GPA calculator in Java attempting to use the **Model View Controller** (MVC) p
 
 
 ## Feature Goals
-- calc gpa for any number of classes per semester
+- calc gpa for any number of classes per semester (or just 8 predefined)
 - given a current GPA (with credits & hours), determine new gpa by adding new classes
-
 - gui to add multiple classes
   - `addNewClass(Scene/Pane whereItemAppearsOnScreen)`
     - dynamically update gui to add new boxes
   - `updateClass()` ? maybe unnecessary
   - `moveUp()` / `moveDown()` maybe drag & drop, but arrows to reorder
     - must fix ArrayList of classes
-- `calculateGpa()`    button / `Enter key`
+- `calculateGpa()`    button / `Enter/Tab keys`
   - just get values from existing text fields
   - checkboxes to **include class in calculation**
   - loop through ArrayList of classes & call `hasValidValues()`
-- ~~`Class` object, add class to `GpaCalculator` object~~
 - **`Class` object extends Pane somehow**
   - **gui object & txt fields part of it**  
   fields CAN have invalid numbers in them, but not used & err message printed
   - bind text field value to objecy's field
   - fields for credits, gpa hours, grade, letter grade, ect
-  - **ALSO CONVERT BETWEEN 0-100 scale  
-  toggle between gpa & numerical (event with radio button?) **
   - letter grade based on `Map` with cutoffs
     - switch statements / else if() for descending grades
   - `hasValidValues()` calls multiple validation methods
@@ -38,7 +34,7 @@ A GPA calculator in Java attempting to use the **Model View Controller** (MVC) p
 somehow make it hidden/unreadable
 - sort by best gpa? / contributing gpa
 - desired gpa & calculate for current classes
-- 2nd tab for formula explanation
+- 2nd tab for formula explanation?
 
 ## References
 - [JavaFX Java GUI Tutorial - 31 - Introduction to FXML](https://youtu.be/K7BOH-Ll8_g) Bucky FXML
@@ -62,6 +58,13 @@ somehow make it hidden/unreadable
 also via lambda: `Platform.runLater(()->class1Grade.requestFocus());`
 - [JavaFx TextField focus lost formatting](http://stackoverflow.com/a/25975373) ChangeListener for `onBlur()` (leave `TextField`)  
 but only for TextField, not another label
+- 
+- December 2017 Links
+- [StackOverflow - ChoiceBox/ComboBox populate from ArrayList](https://stackoverflow.com/a/34288533/8050097)
+- [GitHub - ComboBox FXML example](https://gist.github.com/jewelsea/3062859)
+- [Bucky - ComboBox](https://www.youtube.com/watch?v=Bg5VcIL2IhY)
+- [Bucky - ChoiceBox](https://www.youtube.com/watch?v=K3CenJ2bMok) (didn't use since arrows keys don't change choices)
+- [Bucky - Dropdown Selection Changes](https://www.youtube.com/watch?v=WZGyP57IH6M)
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
