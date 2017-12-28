@@ -1,6 +1,8 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.*;
 
 public class GpaCalculator extends Application {
@@ -17,6 +19,13 @@ public class GpaCalculator extends Application {
 		// primaryStage.setHeight(windowHeight);
 		// primaryStage.setWidth(windowWidth);
 		// primaryStage.setResizable(false);
+		
+		primaryStage.addEventHandler(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
+	        if (KeyCode.ESCAPE == event.getCode()) {
+	        	primaryStage.close();
+	        }
+	    });
+		
 		primaryStage.show();
 	}
 
