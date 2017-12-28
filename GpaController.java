@@ -14,6 +14,7 @@ public class GpaController implements Initializable {
 	private GpaModel model = new GpaModel();
 
 	private ArrayList<String> grades = new ArrayList<String>();
+	private ArrayList<Class> classes = new ArrayList<Class>();
 
 	// @FXML private VBox mainPane;
 	// 	@FXML private GridPane classesPane;
@@ -43,7 +44,6 @@ public class GpaController implements Initializable {
 		grades.add("C");
 		grades.add("C-");
 		grades.add("D+");
-		grades.add("D-");
 		grades.add("F");
 	}
 
@@ -51,6 +51,8 @@ public class GpaController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		class1Grade.setItems(FXCollections.observableArrayList(grades));
 		class1Grade.setValue(grades.get(0));
+
+		classes.add(new Class(class1Grade, class1Credits));
 		
 		// class1Grade.textProperty().addListener((observable, oldValue, newValue) -> {
 		// 	gpaOverallLabel.setText( class1Grade.getText() );
@@ -72,6 +74,8 @@ public class GpaController implements Initializable {
 	}
 	public void test(){
 //		class1Grade.requestFocus();
+		System.out.println("Called test");
+		model.calcGpaOverall(classes);
 	}
 
 	@FXML
@@ -81,7 +85,7 @@ public class GpaController implements Initializable {
 		System.out.println(event.getSource() );
 		//Text a = new Text
 	}
-
+	
 	@FXML
 	public void handleClass1Grade(ActionEvent event){
 		// gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
@@ -95,7 +99,7 @@ public class GpaController implements Initializable {
 
 	@FXML
 	public void handleCalcGpaOverallButton(ActionEvent event){
-		model.calcGpaOverall();		//need pass in classes to calculate
+		model.calcGpaOverall(classes);
 		gpaOverallLabel.setText(numToText( model.getGpaOverall() ));
 	}
 

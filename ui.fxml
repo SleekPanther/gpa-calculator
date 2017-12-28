@@ -32,7 +32,7 @@ quality points label auto updated -->
 			<TextField fx:id="class1Title" onAction="#handleClass1Title" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
-			<ComboBox fx:id="class1Grade" />
+			<ComboBox fx:id="class1Grade" onAction='#test'/>
 			<!-- <TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
 			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" /> -->
 		</VBox>
