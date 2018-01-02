@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -12,45 +12,45 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
+<VBox fx:controller='GpaController' fx:id='mainPane' stylesheets='css/viewCss.css' xmlns='http://javafx.com/javafx/8' xmlns:fx='http://javafx.com/fxml' ><!-- package/path to the controller -->
 
 <!-- change to grid pane so headers line up
 gridPane borders -->
 		
-	<GridPane fx:id="classesPane" styleClass="grid">
-		<Label text="Title (optional)" GridPane.rowIndex="0" GridPane.columnIndex="0" />
-		<Label text="Grade" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-		<Label text="Credits" GridPane.rowIndex="0" GridPane.columnIndex="2" />
-		<Label text="Quality Points" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+	<GridPane fx:id='classesPane' styleClass='grid'>
+		<Label text='Title (optional)' GridPane.rowIndex='0' GridPane.columnIndex='0' />
+		<Label text='Grade' GridPane.rowIndex='0' GridPane.columnIndex='1'/>
+		<Label text='Credits' GridPane.rowIndex='0' GridPane.columnIndex='2' />
+		<Label text='Quality Points' GridPane.rowIndex='0' GridPane.columnIndex='3' />
 
-		<VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
-			<TextField fx:id="class1Title"/>
+		<VBox GridPane.rowIndex='1' GridPane.columnIndex='0'>
+			<TextField fx:id='class1Title'/>
 		</VBox>
-		<VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
-			<ComboBox fx:id="class1Grade"/>
+		<VBox GridPane.rowIndex='1' GridPane.columnIndex='1'>
+			<ComboBox fx:id='class1Grade'/>
 		</VBox>
-		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
-			<TextField fx:id="class1Credits"/>
+		<VBox GridPane.rowIndex='1' GridPane.columnIndex='2'>
+			<TextField fx:id='class1Credits'/>
 		</VBox>
-		<VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
-			<Label fx:id="class1Points" />
+		<VBox GridPane.rowIndex='1' GridPane.columnIndex='3'>
+			<Label fx:id='class1Points' />
 		</VBox>
 	</GridPane>
 
-	<GridPane fx:id="existingGPA">
-		<Label text="Include Current GPA (optional)" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-		<TextField fx:id="currentGPA" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-		<Label fx:id="currentGPAError" styleClass="errorLabel" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+	<GridPane fx:id='existingGPA'>
+		<Label text='Include Current GPA (optional)' GridPane.rowIndex='0' GridPane.columnIndex='0'/>
+		<TextField fx:id='currentGPA' GridPane.rowIndex='0' GridPane.columnIndex='1'/>
+		<Label fx:id='currentGPAError' styleClass='errorLabel' GridPane.rowIndex='0' GridPane.columnIndex='2'/>
 
-		<Label text="Current Credits (optional)" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-		<TextField fx:id="currentCredits" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-		<Label fx:id="currentCreditsError" styleClass="errorLabel" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+		<Label text='Current Credits (optional)' GridPane.rowIndex='1' GridPane.columnIndex='0'/>
+		<TextField fx:id='currentCredits' GridPane.rowIndex='1' GridPane.columnIndex='1'/>
+		<Label fx:id='currentCreditsError' styleClass='errorLabel' GridPane.rowIndex='1' GridPane.columnIndex='2'/>
 	</GridPane>
 
-	<HBox fx:id="calcPane">
-		<Button text="Calculate Overall GPA" fx:id="calcGpaOverallButton" styleClass="buttons" onAction="#handleCalcGpaOverallButton" />
-		<Label text="0.0" fx:id="gpaOverallLabel" />
-		<Button text="Reset" fx:id="resetButton" styleClass="buttons" onAction="#handleResetButton" />
+	<HBox fx:id='calcPane'>
+		<Button text='Calculate Overall GPA' fx:id='calcGpaOverallButton' styleClass='buttons' onAction='#handleCalcGpaOverallButton' />
+		<Label text='0.0' fx:id='gpaOverallLabel' />
+		<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton' />
 	</HBox>
 
 </VBox>
