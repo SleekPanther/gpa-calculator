@@ -20,7 +20,7 @@
 	-fx-border-style: solid;
 }
 
-.gradeColumn{
+.gradeColumn, .gradeColumn ComboBox{
 	-fx-pref-width: 74;
 	-fx-min-width: 74;
 	-fx-max-width: 74;
