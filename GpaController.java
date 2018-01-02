@@ -30,6 +30,8 @@ public class GpaController implements Initializable {
 
 		@FXML private TextField currentGPA;
 		@FXML private Label currentGPAError;
+		@FXML private TextField currentCredits;
+		@FXML private Label currentCreditsError;
 
 	// 	@FXML private VBox calcPane;
 			@FXML private Button calcGpaOverallButton;
@@ -77,6 +79,7 @@ public class GpaController implements Initializable {
 			});
 		}
 
+		//Only allow decimal numbers
 		currentGPA.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -86,7 +89,26 @@ public class GpaController implements Initializable {
 			}
 		});
 
-		currentGPA.focusedProperty().addListener(new TextFieldListener(currentGPA, currentGPAError, "currentGPA"));
+		//Only allow integer credits
+		currentCredits.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("\\d*")) {
+					currentCredits.setText(newValue.replaceAll("[^\\d]", ""));
+				}
+			}
+		});
+
+		currentGPA.setOnAction(e -> calcGpa());
+		currentGPA.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			calcGpa();
+		});
+
+		currentCredits.setOnAction(e -> calcGpa());
+		currentCredits.focusedProperty().addListener((observable, oldValue, newValue) -> {
+			calcGpa();
+		});
+
 
 		Platform.runLater(() -> class1Credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
 	}
@@ -101,13 +123,30 @@ public class GpaController implements Initializable {
 			classObj.qualityPointsLabel.setText("Credits can't be empty");
 		}
 		
-		model.calcGpaOverall(classes);
-		gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		calcGpa();
 	}
 
 	@FXML
 	public void handleCalcGpaOverallButton(ActionEvent event){
-		model.calcGpaOverall(classes);
+		//Needs to check all valid
+
+		calcGpa();
+	}
+
+	public void calcGpa(){
+		//Clear existing error text
+		currentGPAError.setText("");
+		currentCreditsError.setText("");
+
+		//Display error if only 1 field has a value
+		if(GpaModel.isEmptyString(currentGPA.getText()) && !GpaModel.isEmptyString(currentCredits.getText())){
+			currentGPAError.setText("Current GPA required");
+		}
+		else if(!GpaModel.isEmptyString(currentGPA.getText()) && GpaModel.isEmptyString(currentCredits.getText())){
+			currentCreditsError.setText("Current Credits required");
+		}
+
+		model.calcGpaOverall(classes, currentGPA, currentCredits);
 		gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
 	}
 
@@ -129,38 +168,6 @@ public class GpaController implements Initializable {
 		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 			if(!newValue){		// check if focus gained or lost
 				validateAndCalculateClass(classObj);
-			}
-		}
-	}
-
-	class TextFieldListener implements ChangeListener<Boolean> {
-		private final TextField textField;
-		private final Label errorLabel;
-		private String type;
-
-		public TextFieldListener(TextField textField, Label errorLabel) {
-			this(textField, errorLabel, "");
-		}
-		public TextFieldListener(TextField textField, Label errorLabel, String type) {
-			this.textField = textField;
-			this.errorLabel = errorLabel;
-			this.type=type;
-		}
-
-		@Override
-		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-			if(!newValue){		// check if focus gained or lost
-				String errorText = "";
-				if(type.equals("currentGPA")){
-					errorText=model.getGPAErrorIfInvalid(textField.getText());
-					errorLabel.setText(errorText);		//Always set error text (clears error if they fixed the mistake)
-					if(errorText.equals("")){
-						System.out.println("Existing gpa valid");
-					}
-				}else{
-					//For other TextFields, optonally check if invalid & change errText
-					errorLabel.setText(textField.getText()+errorText);
-				}
 			}
 		}
 	}

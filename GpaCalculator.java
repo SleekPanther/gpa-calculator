@@ -21,10 +21,10 @@ public class GpaCalculator extends Application {
 		// primaryStage.setResizable(false);
 		
 		primaryStage.addEventHandler(KeyEvent.KEY_RELEASED, (KeyEvent event) -> {
-	        if (KeyCode.ESCAPE == event.getCode()) {
-	        	primaryStage.close();
-	        }
-	    });
+			if (KeyCode.ESCAPE == event.getCode()) {
+				primaryStage.close();
+			}
+		});
 		
 		primaryStage.show();
 	}

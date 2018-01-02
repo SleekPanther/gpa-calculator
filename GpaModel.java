@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.control.TextField;
+
 public class GpaModel {
 	private final double GPA_UPPER_BOUND = 4;
 	private final double GPA_LOWER_BOUND = 0;
@@ -75,21 +77,20 @@ public class GpaModel {
 		classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
 	}
 
-	public void calcGpaOverall(ArrayList<Class> classes){
+	public void calcGpaOverall(ArrayList<Class> classes, TextField currentGPA, TextField currentCredits) {
 		double totalQualityPoints=0;
-		double totalCredits=0;
+		int totalCredits=0;
 		for(Class c : classes){
 			//Ignore invalid classes from the calculation
 			if(isClassValid(c)){
 				totalQualityPoints += Double.parseDouble(c.getCredits()) * letterGradeToNumber.get(c.getGrade());
-				totalCredits += Double.parseDouble(c.getCredits());
+				totalCredits += Integer.parseInt(c.getCredits());
 			}
 		}
-		System.out.println("quality="+totalQualityPoints+"\tcredits="+totalCredits);
-		// if(currentGPA not empty && is valis){
-		// 	totalQualityPoints += currentGPA;
-		// 	totalCredits += currentCredits;
-		// }
+		if(!isEmptyString(currentGPA.getText()) && !isEmptyString(currentCredits.getText())){
+			totalQualityPoints += Double.parseDouble(currentGPA.getText()) * Integer.parseInt(currentCredits.getText());
+			totalCredits += Integer.parseInt(currentCredits.getText());
+		}
 		gpaOverall = totalQualityPoints / totalCredits;
 	}
 
@@ -100,5 +101,6 @@ public class GpaModel {
 	public void reset(){
 		gpaOverall=0;
 	}
+
 
 }
