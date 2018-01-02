@@ -69,14 +69,7 @@ public class GpaController implements Initializable {
 			currentClass.credits.setOnAction(e -> validateAndCalculateClass(currentClass));
 
 			//Only allow integer credits
-			currentClass.credits.textProperty().addListener(new ChangeListener<String>() {
-				@Override
-				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-					if (!newValue.matches("\\d*")) {
-						class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
-					}
-				}
-			});
+			currentClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(currentClass.credits));
 		}
 
 		//Only allow decimal numbers
@@ -89,15 +82,7 @@ public class GpaController implements Initializable {
 			}
 		});
 
-		//Only allow integer credits
-		currentCredits.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (!newValue.matches("\\d*")) {
-					currentCredits.setText(newValue.replaceAll("[^\\d]", ""));
-				}
-			}
-		});
+		currentCredits.textProperty().addListener(new PositiveIntegerTextFieldListener(currentCredits));
 
 		currentGPA.setOnAction(e -> calcGpa());
 		currentGPA.focusedProperty().addListener((observable, oldValue, newValue) -> {
@@ -168,6 +153,25 @@ public class GpaController implements Initializable {
 		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
 			if(!newValue){		// check if focus gained or lost
 				validateAndCalculateClass(classObj);
+			}
+		}
+	}
+
+	class PositiveIntegerTextFieldListener implements ChangeListener<String> {
+		private TextField textField;
+
+		public PositiveIntegerTextFieldListener(TextField textField){
+			this.textField = textField;
+		}
+
+		@Override
+		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+			System.out.println("old="+oldValue+"\tnew="+newValue);
+			if (!newValue.matches("\\d*")) {
+				textField.setText(newValue.replaceAll("\\D", ""));
+			}
+			if(newValue.matches("0+")){
+				textField.setText(oldValue);
 			}
 		}
 	}
