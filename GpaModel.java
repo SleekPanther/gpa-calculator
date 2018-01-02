@@ -63,52 +63,27 @@ public class GpaModel {
 	}
 
 
-	public void validateClass(Class classObj){
-		classObj.valid=true;		//assume it's valid & check for invalid
-
+	public boolean isClassValid(Class classObj){
 		if(isEmptyString(classObj.getCredits())){
-			classObj.qualityPointsLabel.setText("Credits can't be empty");
-			classObj.valid = false;
-		}
-		else if(!isNumeric(classObj.getCredits())){
-			classObj.qualityPointsLabel.setText("Only numbers allowed");
-			classObj.valid = false;
-		}
-		else{
-			double credits = Double.parseDouble(classObj.getCredits());
-			 if(credits <= 0){
-				classObj.qualityPointsLabel.setText("Credits must be positive");
-				classObj.valid = false;
-			}
-		}
-	}
-
-	public void setQualityPoints(Class classObj){
-		if(classObj.valid){
-			double qualityPoints = Double.parseDouble(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
-			classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
-		}
-		else{
-			//change css to be greyed out
-		}
-	}
-
-	public boolean areAllClassesValid(ArrayList<Class> classes){
-		for(Class c : classes){
-			if(!c.valid){
-				return false;
-			}
+			return false;
 		}
 		return true;
 	}
 
-	//No error handling here, other methods check for invalid input and calcGpaOverall() is only called if everything  is valid
+	public void setQualityPoints(Class classObj){
+		double qualityPoints = Double.parseDouble(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
+		classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
+	}
+
 	public void calcGpaOverall(ArrayList<Class> classes){
 		double totalQualityPoints=0;
 		double totalCredits=0;
 		for(Class c : classes){
-			totalQualityPoints += Double.parseDouble(c.getCredits()) * letterGradeToNumber.get(c.getGrade());
-			totalCredits += Double.parseDouble(c.getCredits());
+			//Ignore invalid classes from the calculation
+			if(isClassValid(c)){
+				totalQualityPoints += Double.parseDouble(c.getCredits()) * letterGradeToNumber.get(c.getGrade());
+				totalCredits += Double.parseDouble(c.getCredits());
+			}
 		}
 		System.out.println("quality="+totalQualityPoints+"\tcredits="+totalCredits);
 		// if(currentGPA not empty && is valis){

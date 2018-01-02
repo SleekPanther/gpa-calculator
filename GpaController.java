@@ -93,16 +93,16 @@ public class GpaController implements Initializable {
 
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
 	public void validateAndCalculateClass(Class classObj){
-		model.validateClass(classObj);
-		model.setQualityPoints(classObj);
-		if(model.areAllClassesValid(classes)){
-			model.calcGpaOverall(classes);
-			gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		//Validate current class & only print error for current class (avoids printing a ton of errors at the beginning)
+		if(model.isClassValid(classObj)){
+			model.setQualityPoints(classObj);
 		}
 		else{
-			System.out.println("Not all classes are valid");
-			//change css on GPA overall label (grey out)
+			classObj.qualityPointsLabel.setText("Credits can't be empty");
 		}
+		
+		model.calcGpaOverall(classes);
+		gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
 	}
 
 	@FXML
