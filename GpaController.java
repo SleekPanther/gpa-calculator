@@ -24,6 +24,10 @@ public class GpaController implements Initializable {
 		@FXML private TextField class1Credits;
 		@FXML private Label class1Points;
 
+		@FXML private ComboBox<String> class2Grade;
+		@FXML private TextField class2Credits;
+		@FXML private Label class2Points;
+
 		@FXML private TextField currentGPA;
 		@FXML private Label currentGPAError;
 
@@ -49,10 +53,15 @@ public class GpaController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		classes.add(new Class(class1Grade, class1Credits, class1Points));
+		classes.add(new Class(class2Grade, class2Credits, class2Points));
+
 		class1Grade.setItems(FXCollections.observableArrayList(grades));
 		class1Grade.setValue(grades.get(0));
 
-		classes.add(new Class(class1Grade, class1Credits, class1Points));
+		class2Grade.setItems(FXCollections.observableArrayList(grades));
+		class2Grade.setValue(grades.get(0));
+
 
 		//for loops for all textfields & grade dropdowns to assign listeners programatically (need arraylists of TextFields & Dropdowns)
 
@@ -62,8 +71,20 @@ public class GpaController implements Initializable {
 
 		class1Credits.textProperty().addListener(new ChangeListener<String>() {
 			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, 
-				String newValue) {
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("\\d*")) {
+					class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
+				}
+			}
+		});
+
+		class2Grade.setOnAction(e -> validateAndCalculateClass(classes.get(1)));
+		class2Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(1)));
+		class2Credits.setOnAction(e -> validateAndCalculateClass(classes.get(1)));
+
+		class2Credits.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (!newValue.matches("\\d*")) {
 					class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
 				}

@@ -10,23 +10,42 @@
 	
 }
 
-.grid > VBox{
+.grid > *{
 	-fx-pref-width: 150;
 	-fx-min-width: 150;
 	-fx-max-width: 150;
 
-	-fx-border-width: 2;
+	-fx-border-width: 1;
 	-fx-border-color: black;
 	-fx-border-style: solid;
 }
 
+.gradeColumn{
+	-fx-pref-width: 74;
+	-fx-min-width: 74;
+	-fx-max-width: 74;
+}
+
+.creditsColumn{
+	-fx-pref-width: 52;
+	-fx-min-width: 52;
+	-fx-max-width: 52;
+}
+
+.qualityPointsColumn{
+	-fx-pref-width: 100;
+	-fx-min-width: 100;
+	-fx-max-width: 100;
+}
+
 #classesPane{
 	-fx-background-color: yellow;
-	
 }
 
 .title{
-	
+	-fx-pref-width: 240;
+	-fx-min-width: 240;
+	-fx-max-width: 240;
 }
 
 TextField{

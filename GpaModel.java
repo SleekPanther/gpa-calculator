@@ -86,7 +86,7 @@ public class GpaModel {
 	public void setQualityPoints(Class classObj){
 		if(classObj.valid){
 			double qualityPoints = Double.parseDouble(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
-			classObj.qualityPointsLabel.setText(qualityPoints + "");
+			classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
 		}
 		else{
 			//change css to be greyed out
