@@ -15,30 +15,27 @@
 <VBox fx:controller="GpaController" fx:id='mainPane' stylesheets="css/viewCss.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" ><!-- package/path to the controller -->
 
 <!-- change to grid pane so headers line up
-gridPane borders
-quality points label auto updated -->
+gridPane borders -->
 		
 	<GridPane fx:id="classesPane" styleClass="grid">
-		<!-- change labels to Text -->
 		<Label text="Title (optional)" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 		<Label text="Grade" GridPane.rowIndex="0" GridPane.columnIndex="2" />
 		<Label text="Credits" GridPane.rowIndex="0" GridPane.columnIndex="3" />
 		<Label text="Quality Points" GridPane.rowIndex="0" GridPane.columnIndex="4" />
 
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
-			<Text styleClass="title" text="Class 1" />
+			<Text styleClass="title" text="REMOVE COLUMN" />
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
-			<TextField fx:id="class1Title" onAction="#handleClass1Title" />
+			<TextField fx:id="class1Title"/>
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="2">
-			<ComboBox fx:id="class1Grade" onAction='#test'/>
-			<!-- <TextField fx:id="class1Grade" onAction="#handleClass1Grade" />
-			<Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" /> -->
+			<ComboBox fx:id="class1Grade"/>
+			<!-- <TextField fx:id="class1Grade" onAction="#handleClass1Grade" /> -->
+			<!-- <Label fx:id="class1GradeError" styleClass="errorLabel" text="class1GradeError" /> -->
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="3">
-			<TextField fx:id="class1Credits" onAction="#handleClass1Credits" />
-			<Label fx:id="class1CreditsError" styleClass="errorLabel" text="class1CreditsError" />
+			<TextField fx:id="class1Credits"/>
 		</VBox>
 		<VBox GridPane.rowIndex="1" GridPane.columnIndex="4">
 			<Label fx:id="class1Points" text="pts" />
@@ -46,7 +43,7 @@ quality points label auto updated -->
 	</GridPane>
 
 	<HBox fx:id="existingGPA">
-		<Label text="Current GPA (optional)"/>
+		<Label text="Include Current GPA (optional)"/>
 		<TextField fx:id="currentGPA" />
 		<Label fx:id="currentGPAError" styleClass="errorLabel" />
 	</HBox>

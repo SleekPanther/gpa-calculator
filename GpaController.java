@@ -11,6 +11,8 @@ import javafx.event.*;
 import java.util.*;
 
 public class GpaController implements Initializable {
+	private static final int DECIMAL_PRECISION = 2;		//how many decimals to round to
+
 	private GpaModel model = new GpaModel();
 
 	private ArrayList<String> grades = new ArrayList<String>();
@@ -19,10 +21,8 @@ public class GpaController implements Initializable {
 	// @FXML private VBox mainPane;
 	// 	@FXML private GridPane classesPane;
 		@FXML private ComboBox<String> class1Grade;
-		@FXML private Label class1GradeError;
-
 		@FXML private TextField class1Credits;
-		@FXML private Label class1CreditsError;
+		@FXML private Label class1Points;
 
 		@FXML private TextField currentGPA;
 		@FXML private Label currentGPAError;
@@ -52,55 +52,38 @@ public class GpaController implements Initializable {
 		class1Grade.setItems(FXCollections.observableArrayList(grades));
 		class1Grade.setValue(grades.get(0));
 
-		classes.add(new Class(class1Grade, class1Credits));
-		
-		// class1Grade.textProperty().addListener((observable, oldValue, newValue) -> {
-		// 	gpaOverallLabel.setText( class1Grade.getText() );
-		// });
+		classes.add(new Class(class1Grade, class1Credits, class1Points));
 
-		// class1Grade.focusedProperty().addListener(new TextFieldListener(class1Grade, class1GradeError));
-		class1Credits.focusedProperty().addListener(new TextFieldListener(class1Credits, class1CreditsError));
+		//for loops for all textfields & grade dropdowns to assign listeners programatically (need arraylists of TextFields & Dropdowns)
+
+		class1Grade.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
+		class1Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(0)));
+
 		currentGPA.focusedProperty().addListener(new TextFieldListener(currentGPA, currentGPAError, "currentGPA"));
 
-		//Also handle acents when pressing Enter, not many buttons
+		//Also handle actions when pressing Enter, not many buttons
 
-		//Request focus must be AFTER he FXML is finished loading
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-//				class1Grade.requestFocus();
-			}
-		});
-	}
-	public void test(){
-//		class1Grade.requestFocus();
-		System.out.println("Called test");
-		model.calcGpaOverall(classes);
+		Platform.runLater(() -> class1Credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
 	}
 
-	@FXML
-	public void handleClass1Title(ActionEvent event){
-		gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
-		System.out.println(event);
-		System.out.println(event.getSource() );
-		//Text a = new Text
-	}
-	
-	@FXML
-	public void handleClass1Grade(ActionEvent event){
-		// gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
-		System.out.println("Pressed Enter");
-	}
-
-	@FXML
-	public void handleClass1Credits(ActionEvent event){
-		// gpaOverallLabel.setText( ((TextInputControl) event.getSource()).getText() );
+	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
+	public void validateAndCalculateClass(Class classObj){
+		model.validateClass(classObj);
+		model.setQualityPoints(classObj);
+		if(model.areAllClassesValid(classes)){
+			model.calcGpaOverall(classes);
+			gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		}
+		else{
+			System.out.println("Not all classes are valid");
+			//change css on GPA overall label (grey out)
+		}
 	}
 
 	@FXML
 	public void handleCalcGpaOverallButton(ActionEvent event){
 		model.calcGpaOverall(classes);
-		gpaOverallLabel.setText(numToText( model.getGpaOverall() ));
+		gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
 	}
 
 	@FXML
@@ -110,25 +93,31 @@ public class GpaController implements Initializable {
 	}
 
 
-	//auto-convert numbers to text for setting GUI elements
-	public static String numToText(double number){
-		return numToText(number +"");
-	}
-	public static String numToText(String number){
-		return number;
-	}
+	class ClassTextFieldListener implements ChangeListener<Boolean> {
+		private Class classObj;
 
+		public ClassTextFieldListener(Class classObj) {
+			this.classObj=classObj;
+		}
+
+		@Override
+		public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+			if(!newValue){		// check if focus gained or lost
+				validateAndCalculateClass(classObj);
+			}
+		}
+	}
 
 	class TextFieldListener implements ChangeListener<Boolean> {
-		private final TextField numericTextField;
+		private final TextField textField;
 		private final Label errorLabel;
 		private String type;
 
-		TextFieldListener(TextField numericTextField, Label errorLabel) {
-			this(numericTextField, errorLabel, "");
+		public TextFieldListener(TextField textField, Label errorLabel) {
+			this(textField, errorLabel, "");
 		}
-		TextFieldListener(TextField numericTextField, Label errorLabel, String type) {
-			this.numericTextField = numericTextField;
+		public TextFieldListener(TextField textField, Label errorLabel, String type) {
+			this.textField = textField;
 			this.errorLabel = errorLabel;
 			this.type=type;
 		}
@@ -138,19 +127,32 @@ public class GpaController implements Initializable {
 			if(!newValue){		// check if focus gained or lost
 				String errorText = "";
 				if(type.equals("currentGPA")){
-					errorText=model.getGPAErrorTextIfInvalid(numericTextField.getText());
+					errorText=model.getGPAErrorIfInvalid(textField.getText());
 					errorLabel.setText(errorText);		//Always set error text (clears error if they fixed the mistake)
 					if(errorText.equals("")){
-						gpaOverallLabel.setText("model.calcGpaOverall()");
+						System.out.println("Existing gpa valid");
 					}
 				}else{
-					//check if INVALID
-					errorText=" err";
-					// String errorText = model.getNumericErrorTextIfInvalid();
-					errorLabel.setText(numericTextField.getText()+errorText);
+					//For other TextFields, optonally check if invalid & change errText
+					errorLabel.setText(textField.getText()+errorText);
 				}
 			}
 		}
+	}
+
+
+	//auto-convert numbers to text for setting GUI elements
+	public static String numToText(double number){
+		return numToText(number + "");
+	}
+	//String parameter version just in case argument type changes
+	public static String numToText(String number){
+		return number;
+	}
+
+	public static double round(double number, int decimals){
+		double powerOfTen= Math.pow(10, decimals);		//must be a double to avoid integer division truncation errors
+		return Math.round(number * powerOfTen ) / powerOfTen;
 	}
 
 }

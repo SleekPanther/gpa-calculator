@@ -7,10 +7,9 @@ public class GpaModel {
 	private final double GPA_LOWER_BOUND = 0;
 	private final double CREDITS_LOWER_BOUND = 0;
 	
-	HashMap<String, Double> letterGradeToNumber = new HashMap<String, Double>();
+	private HashMap<String, Double> letterGradeToNumber = new HashMap<String, Double>();
 
 	private double gpaOverall;
-	//list of classes?
 
 	public GpaModel() {
 		letterGradeToNumber.put("A+", 4.0);
@@ -27,14 +26,17 @@ public class GpaModel {
 		letterGradeToNumber.put("F", 0.0);
 	}
 
-	public String getGPAErrorTextIfInvalid(String number){
+	public String getGPAErrorIfInvalid(String number){
 		String errorText="";
 
-		double gpa;
 		if(!isNumeric(number)){
+			if(isEmptyString(number)){		//Return early if TextBox is empty (ignore since optional calculation)
+				return "";
+			}
 			errorText = "Error: GPA must be a number";
 		}
 		else{
+			double gpa;
 			gpa = Double.parseDouble(number);
 			if(gpa > GPA_UPPER_BOUND){
 				errorText="Error: GPA can't be > 4.0";
@@ -56,18 +58,64 @@ public class GpaModel {
 		return true;
 	}
 
+	public static boolean isEmptyString(String input){
+		return input.trim().equals("");
+	}
 
-	public void calcGpaOverall(ArrayList<Class> classes){	//helper methods throw exceptions
-		double total=0;
-		total=11;
-		//for(){} all classes passed in
-		gpaOverall=total/5;
-		
-		gpaOverall=System.nanoTime();
-		
-		for(Class c : classes){
-			System.out.println(c.getGrade() + " " + c.getCredits());
+
+	public void validateClass(Class classObj){
+		classObj.valid=true;		//assume it's valid & check for invalid
+
+		if(isEmptyString(classObj.getCredits())){
+			classObj.qualityPointsLabel.setText("Credits can't be empty");
+			classObj.valid = false;
 		}
+		else if(!isNumeric(classObj.getCredits())){
+			classObj.qualityPointsLabel.setText("Only numbers allowed");
+			classObj.valid = false;
+		}
+		else{
+			double credits = Double.parseDouble(classObj.getCredits());
+			 if(credits <= 0){
+				classObj.qualityPointsLabel.setText("Credits must be positive");
+				classObj.valid = false;
+			}
+		}
+	}
+
+	public void setQualityPoints(Class classObj){
+		if(classObj.valid){
+			double qualityPoints = Double.parseDouble(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
+			classObj.qualityPointsLabel.setText(qualityPoints + "");
+		}
+		else{
+			//change css to be greyed out
+		}
+	}
+
+	public boolean areAllClassesValid(ArrayList<Class> classes){
+		for(Class c : classes){
+			if(!c.valid){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	//No error handling here, other methods check for invalid input and calcGpaOverall() is only called if everything  is valid
+	public void calcGpaOverall(ArrayList<Class> classes){
+		double totalQualityPoints=0;
+		double totalCredits=0;
+		for(Class c : classes){
+			totalQualityPoints += Double.parseDouble(c.getCredits()) * letterGradeToNumber.get(c.getGrade());
+			totalCredits += Double.parseDouble(c.getCredits());
+		}
+		System.out.println("quality="+totalQualityPoints+"\tcredits="+totalCredits);
+		// if(currentGPA not empty && is valis){
+		// 	totalQualityPoints += currentGPA;
+		// 	totalCredits += currentCredits;
+		// }
+		gpaOverall = totalQualityPoints / totalCredits;
 	}
 
 	public double getGpaOverall(){
@@ -75,7 +123,7 @@ public class GpaModel {
 	}
 
 	public void reset(){
-
+		gpaOverall=0;
 	}
 
 }
