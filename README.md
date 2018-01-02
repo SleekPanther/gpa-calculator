@@ -65,6 +65,10 @@ but only for TextField, not another label
 - [Bucky - ComboBox](https://www.youtube.com/watch?v=Bg5VcIL2IhY)
 - [Bucky - ChoiceBox](https://www.youtube.com/watch?v=K3CenJ2bMok) (didn't use since arrows keys don't change choices)
 - [Bucky - Dropdown Selection Changes](https://www.youtube.com/watch?v=WZGyP57IH6M)
+-
+- [StackOverflow - What is the recommended way to make a numeric TextField in JavaFX?
+](https://stackoverflow.com/a/30796829/8050097) Integer TextField validation
+- [StackOverflow - JAVAFx TextField Validation Decimal value](https://stackoverflow.com/a/45495631/8050097) **Decimal** TextField validation
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
