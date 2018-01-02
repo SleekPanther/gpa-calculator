@@ -20,10 +20,12 @@ public class GpaController implements Initializable {
 
 	// @FXML private VBox mainPane;
 	// 	@FXML private GridPane classesPane;
+		@FXML private TextField class1Title;
 		@FXML private ComboBox<String> class1Grade;
 		@FXML private TextField class1Credits;
 		@FXML private Label class1Points;
 
+		@FXML private TextField class2Title;
 		@FXML private ComboBox<String> class2Grade;
 		@FXML private TextField class2Credits;
 		@FXML private Label class2Points;
@@ -54,8 +56,8 @@ public class GpaController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		classes.add(new Class(class1Grade, class1Credits, class1Points));
-		classes.add(new Class(class2Grade, class2Credits, class2Points));
+		classes.add(new Class(class1Title, class1Grade, class1Credits, class1Points));
+		classes.add(new Class(class2Title, class2Grade, class2Credits, class2Points));
 
 		for(int i=0; i<classes.size(); i++){
 			Class currentClass = classes.get(i);
@@ -94,7 +96,7 @@ public class GpaController implements Initializable {
 		});
 
 
-		Platform.runLater(() -> class1Credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
+		Platform.runLater(() -> classes.get(0).credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
 	}
 
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
@@ -133,7 +135,23 @@ public class GpaController implements Initializable {
 	@FXML
 	public void handleResetButton(ActionEvent event){
 		model.reset();
+
+		for(Class c : classes){
+			c.title.setText("");
+			c.grade.setValue(grades.get(0));
+			c.credits.setText("");
+			c.qualityPointsLabel.setText("");
+		}
+
+		currentGPA.setText("");
+		currentGPAError.setText("");
+
+		currentCredits.setText("");
+		currentCreditsError.setText("");
+
 		gpaOverall.setText("0.0");
+
+		classes.get(0).credits.requestFocus();
 	}
 
 

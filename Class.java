@@ -1,11 +1,13 @@
 import javafx.scene.control.*;
 
 public class Class{
+	public TextField title;
 	public ComboBox<String> grade;
 	public TextField credits;
 	public Label qualityPointsLabel;
 	
-	public Class(ComboBox<String> grade, TextField credits, Label qualityPointsLabel){
+	public Class(TextField title, ComboBox<String> grade, TextField credits, Label qualityPointsLabel){
+		this.title=title;
 		this.grade=grade;
 		this.credits=credits;
 		this.qualityPointsLabel=qualityPointsLabel;
