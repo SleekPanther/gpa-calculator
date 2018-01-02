@@ -58,10 +58,9 @@ public class GpaController implements Initializable {
 
 		class1Grade.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
 		class1Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(0)));
+		class1Credits.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
 
 		currentGPA.focusedProperty().addListener(new TextFieldListener(currentGPA, currentGPAError, "currentGPA"));
-
-		//Also handle actions when pressing Enter, not many buttons
 
 		Platform.runLater(() -> class1Credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
 	}
