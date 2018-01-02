@@ -53,9 +53,13 @@ gridPane borders -->
 	</GridPane>
 
 	<HBox fx:id='calcPane'>
-		<Button text='Calculate Overall GPA' fx:id='calcGpaOverallButton' styleClass='buttons' onAction='#handleCalcGpaOverallButton' />
-		<Label text='0.0' fx:id='gpaOverallLabel' />
-		<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton' />
+		<!-- <Label text='GPA:' fx:id='gpaLabel'/>
+		<Label text='0.0' fx:id='gpa' /> -->
+		<!-- <Button text='Calculate Overall GPA' fx:id='calcGpaOverallButton' styleClass='buttons' onAction='#handleCalcGpaOverallButton' /> -->
+		<Label text='GPA:' fx:id='gpaLabel'/>
+		<Label text='0.0' fx:id='gpaOverall' />
 	</HBox>
+	
+	<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton' />
 
 </VBox>

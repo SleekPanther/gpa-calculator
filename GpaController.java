@@ -34,8 +34,7 @@ public class GpaController implements Initializable {
 		@FXML private Label currentCreditsError;
 
 	// 	@FXML private VBox calcPane;
-			@FXML private Button calcGpaOverallButton;
-			@FXML private Label gpaOverallLabel;
+			@FXML private Label gpaOverall;
 			@FXML private Button resetButton;
 	//
 
@@ -111,13 +110,6 @@ public class GpaController implements Initializable {
 		calcGpa();
 	}
 
-	@FXML
-	public void handleCalcGpaOverallButton(ActionEvent event){
-		//Needs to check all valid
-
-		calcGpa();
-	}
-
 	public void calcGpa(){
 		//Clear existing error text
 		currentGPAError.setText("");
@@ -132,13 +124,13 @@ public class GpaController implements Initializable {
 		}
 
 		model.calcGpaOverall(classes, currentGPA, currentCredits);
-		gpaOverallLabel.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		gpaOverall.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
 	}
 
 	@FXML
 	public void handleResetButton(ActionEvent event){
 		model.reset();
-		gpaOverallLabel.setText("0.0");
+		gpaOverall.setText("0.0");
 	}
 
 
@@ -166,7 +158,6 @@ public class GpaController implements Initializable {
 
 		@Override
 		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-			System.out.println("old="+oldValue+"\tnew="+newValue);
 			if (!newValue.matches("\\d*")) {
 				textField.setText(newValue.replaceAll("\\D", ""));
 			}

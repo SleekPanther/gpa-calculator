@@ -20,7 +20,7 @@ public class GpaCalculator extends Application {
 		// primaryStage.setWidth(windowWidth);
 		// primaryStage.setResizable(false);
 		
-		primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {	//Destroy on key press to avoid calling any other methods when closing
+		primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (KeyEvent event) -> {	//Destroy on key PRESS to avoid calling any other methods when closing
 			if (KeyCode.ESCAPE == event.getCode()) {
 				primaryStage.close();
 			}

@@ -58,10 +58,25 @@ TextField{
 	
 }
 
-#gpaOverallLabel{
-	-fx-pref-width: 150;
-	-fx-min-width: 150;
-	-fx-max-width: 150;
+#gpaLabel,  #gpaOverall{
+	-fx-font-size: 20px;
+	-fx-font-weight: bold;
+}
+
+#gpaLabel{
+	-fx-background-color: black;
+	-fx-text-fill: white;
+	-fx-pref-width: 70;
+	-fx-min-width: 70;
+	-fx-max-width: 70;
+}
+
+#gpaOverall{
+	-fx-padding: 0 0 0 10px;
+	-fx-background-color: lightgreen;
+	-fx-pref-width: 60;
+	-fx-min-width: 60;
+	-fx-max-width: 60;
 }
 
 .buttons{
