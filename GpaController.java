@@ -122,6 +122,9 @@ public class GpaController implements Initializable {
 		else if(!GpaModel.isEmptyString(currentGPA.getText()) && GpaModel.isEmptyString(currentCredits.getText())){
 			currentCreditsError.setText("Current Credits required");
 		}
+		else if(!GpaModel.isEmptyString(currentGPA.getText())){
+			currentGPAError.setText(model.getGPAErrorIfInvalid(currentGPA.getText()));
+		}
 
 		model.calcGpaOverall(classes, currentGPA, currentCredits);
 		gpaOverall.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");

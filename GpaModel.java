@@ -1,17 +1,15 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.scene.control.TextField;
 
 public class GpaModel {
-	private final double GPA_UPPER_BOUND = 4;
-	private final double GPA_LOWER_BOUND = 0;
-	private final double CREDITS_LOWER_BOUND = 0;
+	private final int GPA_UPPER_BOUND = 4;
 	
 	private HashMap<String, Double> letterGradeToNumber = new HashMap<String, Double>();
 
 	private double gpaOverall;
+
 
 	public GpaModel() {
 		letterGradeToNumber.put("A+", 4.0);
@@ -30,22 +28,8 @@ public class GpaModel {
 
 	public String getGPAErrorIfInvalid(String number){
 		String errorText="";
-
-		if(!isNumeric(number)){
-			if(isEmptyString(number)){		//Return early if TextBox is empty (ignore since optional calculation)
-				return "";
-			}
-			errorText = "Error: GPA must be a number";
-		}
-		else{
-			double gpa;
-			gpa = Double.parseDouble(number);
-			if(gpa > GPA_UPPER_BOUND){
-				errorText="Error: GPA can't be > 4.0";
-			}
-			if(gpa < GPA_LOWER_BOUND){
-				errorText="Error: GPA can't be negative";
-			}
+		if(Double.parseDouble(number) > GPA_UPPER_BOUND){
+			errorText="Error: GPA can't be > 4.0";
 		}
 		return errorText;
 	}
@@ -87,7 +71,7 @@ public class GpaModel {
 				totalCredits += Integer.parseInt(c.getCredits());
 			}
 		}
-		if(!isEmptyString(currentGPA.getText()) && !isEmptyString(currentCredits.getText())){
+		if(!isEmptyString(currentGPA.getText()) && !isEmptyString(currentCredits.getText()) && getGPAErrorIfInvalid(currentGPA.getText()).equals("")){
 			totalQualityPoints += Double.parseDouble(currentGPA.getText()) * Integer.parseInt(currentCredits.getText());
 			totalCredits += Integer.parseInt(currentCredits.getText());
 		}
@@ -101,6 +85,5 @@ public class GpaModel {
 	public void reset(){
 		gpaOverall=0;
 	}
-
 
 }
