@@ -60,6 +60,25 @@ public class GpaController implements Initializable {
 		class1Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(0)));
 		class1Credits.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
 
+		class1Credits.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, 
+				String newValue) {
+				if (!newValue.matches("\\d*")) {
+					class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
+				}
+			}
+		});
+
+		currentGPA.textProperty().addListener(new ChangeListener<String>() {
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (!newValue.matches("\\d*(\\.\\d*)?")) {
+					currentGPA.setText(oldValue);
+				}
+			}
+		});
+
 		currentGPA.focusedProperty().addListener(new TextFieldListener(currentGPA, currentGPAError, "currentGPA"));
 
 		Platform.runLater(() -> class1Credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
