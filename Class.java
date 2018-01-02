@@ -1,8 +1,8 @@
 import javafx.scene.control.*;
 
 public class Class{
-	private ComboBox<String> grade;
-	private TextField credits;
+	public ComboBox<String> grade;
+	public TextField credits;
 	public Label qualityPointsLabel;
 	public boolean valid;	//is the class in a valid state (e.g. has both credits and grade & valid values)
 	

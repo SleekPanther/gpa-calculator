@@ -56,40 +56,26 @@ public class GpaController implements Initializable {
 		classes.add(new Class(class1Grade, class1Credits, class1Points));
 		classes.add(new Class(class2Grade, class2Credits, class2Points));
 
-		class1Grade.setItems(FXCollections.observableArrayList(grades));
-		class1Grade.setValue(grades.get(0));
+		for(int i=0; i<classes.size(); i++){
+			Class currentClass = classes.get(i);
+			currentClass.grade.setItems(FXCollections.observableArrayList(grades));
+			currentClass.grade.setValue(grades.get(0));
 
-		class2Grade.setItems(FXCollections.observableArrayList(grades));
-		class2Grade.setValue(grades.get(0));
+			currentClass.grade.setOnAction(e -> validateAndCalculateClass(currentClass));
+			
+			currentClass.credits.focusedProperty().addListener(new ClassTextFieldListener(currentClass));
+			currentClass.credits.setOnAction(e -> validateAndCalculateClass(currentClass));
 
-
-		//for loops for all textfields & grade dropdowns to assign listeners programatically (need arraylists of TextFields & Dropdowns)
-
-		class1Grade.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
-		class1Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(0)));
-		class1Credits.setOnAction(e -> validateAndCalculateClass(classes.get(0)));
-
-		class1Credits.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (!newValue.matches("\\d*")) {
-					class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
+			//Only allow integer credits
+			currentClass.credits.textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					if (!newValue.matches("\\d*")) {
+						class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
+					}
 				}
-			}
-		});
-
-		class2Grade.setOnAction(e -> validateAndCalculateClass(classes.get(1)));
-		class2Credits.focusedProperty().addListener(new ClassTextFieldListener(classes.get(1)));
-		class2Credits.setOnAction(e -> validateAndCalculateClass(classes.get(1)));
-
-		class2Credits.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				if (!newValue.matches("\\d*")) {
-					class1Credits.setText(newValue.replaceAll("[^\\d]", ""));
-				}
-			}
-		});
+			});
+		}
 
 		currentGPA.textProperty().addListener(new ChangeListener<String>() {
 			@Override
