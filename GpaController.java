@@ -56,11 +56,9 @@ public class GpaController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		classes.add(new Class(class1Title, class1Grade, class1Credits, class1Points));
-		classes.add(new Class(class2Title, class2Grade, class2Credits, class2Points));
-
-		for(int i=3; i<8; i++){
-			TextField title = new TextField(i+"");
+		int rowOffset = 1;
+		for(int i=0+rowOffset; i<8+rowOffset; i++){
+			TextField title = new TextField();
 			title.setId("class"+i+"Title");
 
 			Pane gradeContainer = new Pane();
@@ -71,7 +69,7 @@ public class GpaController implements Initializable {
 			gradeDropdown.setValue(gradesOptions.get(0));
 			gradeContainer.getChildren().addAll(gradeDropdown);
 
-			TextField credits = new TextField(3+"");
+			TextField credits = new TextField();
 			credits.setId("class"+i+"Credits");
 			credits.getStyleClass().addAll("creditsColumn");
 
