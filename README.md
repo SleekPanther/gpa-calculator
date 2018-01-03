@@ -69,6 +69,9 @@ but only for TextField, not another label
 - [StackOverflow - What is the recommended way to make a numeric TextField in JavaFX?
 ](https://stackoverflow.com/a/30796829/8050097) Integer TextField validation
 - [StackOverflow - JAVAFx TextField Validation Decimal value](https://stackoverflow.com/a/45495631/8050097) **Decimal** TextField validation
+- 
+- [How to Use the Focus Subsystem](https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html) Meant for Swing, but similar in JavaFX
+- [Remove a row from a GridPane](https://stackoverflow.com/a/40517410/8050097) Remove row from GridPane method
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
@@ -78,7 +81,7 @@ but only for TextField, not another label
   - [JavaFX separating event handling from controller class - Stack Overflow](http://stackoverflow.com/q/36663988) not enough details
   - [javafx multiple buttons to same handler - Stack Overflow](http://stackoverflow.com/a/25410169) initial thougts, but didn't pan out
   - [Multiple Buttons To Same Action Listener](http://www.dreamincode.net/forums/topic/234827-multiple-buttons-to-same-action-listener/#entry1357573) right idea, but using ActionListener instead of EventHandler
-  - [JavaFX 8 Event Handling Examples](http://code.makery.ch/blog/javafx-8-event-handling-examples/) JavaFX, but too complex
+  - [JavaFX 8 Event Handling Examples](http://code.makery.ch/blog/javafx-8-event-handling-examples/) JavaFX button handing and much more
   - [4 Working with Event Handlers](https://docs.oracle.com/javafx/2/events/handlers.htm) `addEventHandler()`
   - [Difference between setOnXXX() method and addEventHandler() JavaFx - Stack Overflow](http://stackoverflow.com/q/37821796)
   - [Handling Events with Listeners - vaadin](https://vaadin.com/docs/-/part/framework/application/application-events.html) anonymous inner classes
