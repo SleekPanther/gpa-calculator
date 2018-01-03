@@ -22,24 +22,6 @@ gridPane borders -->
 		<Label text='Grade' GridPane.rowIndex='0' GridPane.columnIndex='1' styleClass='gradeColumn'/>
 		<Label text='Credits' GridPane.rowIndex='0' GridPane.columnIndex='2' styleClass='creditsColumn'/>
 		<Label text='Quality Points' GridPane.rowIndex='0' GridPane.columnIndex='3' styleClass='qualityPointsColumn'/>
-
-		<TextField fx:id='class1Title' GridPane.rowIndex='1' GridPane.columnIndex='0'/>
-		<Pane GridPane.rowIndex='1' GridPane.columnIndex='1' styleClass='gradeColumn'>
-			<ComboBox fx:id='class1Grade' />
-		</Pane>
-		<TextField fx:id='class1Credits' GridPane.rowIndex='1' GridPane.columnIndex='2' styleClass='creditsColumn'/>
-		<Pane GridPane.rowIndex='1' GridPane.columnIndex='3' styleClass='qualityPointsColumn'>
-			<Label fx:id='class1Points'/>
-		</Pane>
-
-		<TextField fx:id='class2Title' GridPane.rowIndex='2' GridPane.columnIndex='0'/>
-		<Pane GridPane.rowIndex='2' GridPane.columnIndex='1' styleClass='gradeColumn'>
-			<ComboBox fx:id='class2Grade' />
-		</Pane>
-		<TextField fx:id='class2Credits' GridPane.rowIndex='2' GridPane.columnIndex='2' styleClass='creditsColumn'/>
-		<Pane GridPane.rowIndex='2' GridPane.columnIndex='3' styleClass='qualityPointsColumn'>
-			<Label fx:id='class2Points'/>
-		</Pane>
 	</GridPane>
 
 	<GridPane fx:id='existingGPA'>
