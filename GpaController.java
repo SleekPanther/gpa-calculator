@@ -251,7 +251,7 @@ public class GpaController implements Initializable {
 
 	public static double roundDown(double number, int decimals){
 		double powerOfTen= Math.pow(10, decimals);		//must be a double to avoid integer division truncation errors
-		return Math.floor(number * powerOfTen ) / powerOfTen;
+		return Math.floor(number * powerOfTen) / powerOfTen;
 	}
 
 }

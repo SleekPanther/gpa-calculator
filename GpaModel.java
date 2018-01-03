@@ -78,7 +78,12 @@ public class GpaModel {
 			totalQualityPoints += Double.parseDouble(currentGPA.getText()) * Integer.parseInt(currentCredits.getText());
 			totalCredits += Integer.parseInt(currentCredits.getText());
 		}
-		gpaOverall = totalQualityPoints / totalCredits;
+
+		if(totalCredits==0){
+			gpaOverall=0;
+		}else{
+			gpaOverall = totalQualityPoints / totalCredits;
+		}
 	}
 
 	public double getGpaOverall(){
