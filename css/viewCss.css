@@ -38,6 +38,12 @@
 	-fx-max-width: 160;
 }
 
+.removeColumn{
+	-fx-pref-width: 80;
+	-fx-min-width: 80;
+	-fx-max-width: 80;
+}
+
 #classesPane{
 	-fx-background-color: yellow;
 }

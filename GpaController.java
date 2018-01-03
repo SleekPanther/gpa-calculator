@@ -1,5 +1,6 @@
 import java.net.URL;
 import javafx.fxml.*;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
@@ -22,7 +23,7 @@ public class GpaController implements Initializable {
 
 	private final int INITIAL_NUMBER_OF_CLASSES = 8;
 	private final int ROW_OFFSET = 1;	//Row 1 defined in FXML for column headers
-	private int nextFreeClassRow;	//next available row to insert a class
+	private int nextFreeClassRow = ROW_OFFSET;	//next available row to insert a class
 
 	// @FXML private VBox mainPane;
 	@FXML private GridPane classesPane;
@@ -44,7 +45,6 @@ public class GpaController implements Initializable {
 		@FXML private HBox calcPane;
 			@FXML private Label gpaOverall;
 			@FXML private Button resetButton;
-	//
 
 	public GpaController(){
 		gradesOptions.add("A+");
@@ -66,7 +66,6 @@ public class GpaController implements Initializable {
 			Class newClass = addClass(row);
 			registerEventHandlers(newClass);
 		}
-		nextFreeClassRow = INITIAL_NUMBER_OF_CLASSES + ROW_OFFSET + 1;
 
 		//Only allow decimal numbers
 		currentGPA.textProperty().addListener(new ChangeListener<String>() {
@@ -95,6 +94,8 @@ public class GpaController implements Initializable {
 	}
 
 	private Class addClass(int row){
+		nextFreeClassRow++;
+
 		TextField title = new TextField();
 		title.setId("class"+row+"Title");
 
@@ -117,12 +118,17 @@ public class GpaController implements Initializable {
 		qualityPoints.setId("class"+row+"Points");
 		qualityPointsContainer.getChildren().addAll(qualityPoints);
 
+		Button removeButton = new Button("Remove");
+		removeButton.getStyleClass().addAll("removeColumn");
+		removeButton.setFocusTraversable(false);
+
 		classesPane.add(title, 0, row);
 		classesPane.add(gradeContainer, 1, row);
 		classesPane.add(credits, 2, row);
 		classesPane.add(qualityPointsContainer, 3, row);
+		classesPane.add(removeButton, 4, row);
 
-		Class newClass = new Class(title, gradeDropdown, credits, qualityPoints);
+		Class newClass = new Class(row, title, gradeDropdown, credits, qualityPoints, removeButton);
 		classes.add(newClass);
 
 		return newClass;
@@ -138,10 +144,40 @@ public class GpaController implements Initializable {
 		newClass.credits.setOnAction(e -> validateAndCalculateClass(newClass));
 
 		newClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(newClass.credits));
+
+		newClass.removeButton.setOnAction(e -> removeClass(newClass.id));
+	}
+
+	private void removeClass(int row){
+		Set<Node> deleteNodes = new HashSet<Node>();
+		for (Node child : classesPane.getChildren()) {
+			Integer rowIndex = GridPane.getRowIndex(child);		// get index from child
+
+			// handle null values for index=0
+			int r = rowIndex == null ? 0 : rowIndex;
+
+			if (r > row) {			// decrement rows for rows after the deleted row
+				GridPane.setRowIndex(child, r-1);
+			}
+			else if (r == row) {		// collect matching rows for deletion
+				deleteNodes.add(child);
+			}
+		}
+
+		classesPane.getChildren().removeAll(deleteNodes);	// remove nodes from row
+
+		//decrement row IDs for Class objects BELOW the deleted row
+		for(int i=row; i<classes.size(); i++){
+			classes.get(i).id = classes.get(i).id -1;
+		}
+
+		classes.remove(row-1);		//Remove from class list (-1 offset since GUI starts at row=1 & arraus count from 0)
+
+		nextFreeClassRow--;		//decrement next available row since 1 was removed
 	}
 
 	public void handleAddClassButton(ActionEvent event){
-		Class newClass = addClass(nextFreeClassRow++);
+		Class newClass = addClass(nextFreeClassRow);		//add new class at current available row
 		registerEventHandlers(newClass);
 	}
 
@@ -195,7 +231,7 @@ public class GpaController implements Initializable {
 		currentCredits.setText("");
 		currentCreditsError.setText("");
 
-		gpaOverall.setText("0.0");
+		gpaOverall.setText("0.00");
 
 		classes.get(0).credits.requestFocus();
 	}
