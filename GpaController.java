@@ -9,9 +9,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.*;
 import javafx.event.*;
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class GpaController implements Initializable {
 	private static final int DECIMAL_PRECISION = 2;		//how many decimals to round to
+	private DecimalFormat numberFormatter = new DecimalFormat("0.00");
 
 	private GpaModel model = new GpaModel();
 
@@ -158,7 +160,7 @@ public class GpaController implements Initializable {
 		}
 
 		model.calcGpaOverall(classes, currentGPA, currentCredits);
-		gpaOverall.setText(roundDown(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		gpaOverall.setText(numberFormatter.format(roundDown(model.getGpaOverall(), DECIMAL_PRECISION)));
 	}
 
 	@FXML

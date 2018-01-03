@@ -2,8 +2,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.scene.control.TextField;
+import java.text.DecimalFormat;
 
 public class GpaModel {
+	private DecimalFormat numberFormatter = new DecimalFormat("0.00");
+
 	private final int GPA_UPPER_BOUND = 4;
 	
 	private HashMap<String, Double> letterGradeToNumber = new HashMap<String, Double>();
@@ -58,7 +61,7 @@ public class GpaModel {
 
 	public void setQualityPoints(Class classObj){
 		double qualityPoints = Integer.parseInt(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
-		classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
+		classObj.qualityPointsLabel.setText(numberFormatter.format(GpaController.round(qualityPoints, 2)));
 	}
 
 	public void calcGpaOverall(ArrayList<Class> classes, TextField currentGPA, TextField currentCredits) {
