@@ -158,7 +158,7 @@ public class GpaController implements Initializable {
 		}
 
 		model.calcGpaOverall(classes, currentGPA, currentCredits);
-		gpaOverall.setText(round(model.getGpaOverall(), DECIMAL_PRECISION)+"");
+		gpaOverall.setText(roundDown(model.getGpaOverall(), DECIMAL_PRECISION)+"");
 	}
 
 	@FXML
@@ -230,6 +230,11 @@ public class GpaController implements Initializable {
 	public static double round(double number, int decimals){
 		double powerOfTen= Math.pow(10, decimals);		//must be a double to avoid integer division truncation errors
 		return Math.round(number * powerOfTen ) / powerOfTen;
+	}
+
+	public static double roundDown(double number, int decimals){
+		double powerOfTen= Math.pow(10, decimals);		//must be a double to avoid integer division truncation errors
+		return Math.floor(number * powerOfTen ) / powerOfTen;
 	}
 
 }

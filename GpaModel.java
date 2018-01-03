@@ -14,14 +14,14 @@ public class GpaModel {
 	public GpaModel() {
 		letterGradeToNumber.put("A+", 4.0);
 		letterGradeToNumber.put("A", 4.0);
-		letterGradeToNumber.put("A-", 11/3.0);
-		letterGradeToNumber.put("B+", 10/3.0);
+		letterGradeToNumber.put("A-", 3.67);
+		letterGradeToNumber.put("B+", 3.33);
 		letterGradeToNumber.put("B", 3.0);
-		letterGradeToNumber.put("B-", 8/3.0);
-		letterGradeToNumber.put("C+", 7/3.0);
+		letterGradeToNumber.put("B-", 2.67);
+		letterGradeToNumber.put("C+", 2.33);
 		letterGradeToNumber.put("C", 2.0);
-		letterGradeToNumber.put("C-", 5/3.0);
-		letterGradeToNumber.put("D+", 4/3.0);
+		letterGradeToNumber.put("C-", 1.67);
+		letterGradeToNumber.put("D+", 1.33);
 		letterGradeToNumber.put("D", 1.0);
 		letterGradeToNumber.put("F", 0.0);
 	}
@@ -57,7 +57,7 @@ public class GpaModel {
 	}
 
 	public void setQualityPoints(Class classObj){
-		double qualityPoints = Double.parseDouble(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
+		double qualityPoints = Integer.parseInt(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
 		classObj.qualityPointsLabel.setText(GpaController.round(qualityPoints, 2) + "");
 	}
 
