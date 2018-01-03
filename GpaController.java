@@ -15,11 +15,11 @@ public class GpaController implements Initializable {
 
 	private GpaModel model = new GpaModel();
 
-	private ArrayList<String> grades = new ArrayList<String>();
+	private ArrayList<String> gradesOptions = new ArrayList<String>();
 	private ArrayList<Class> classes = new ArrayList<Class>();
 
 	// @FXML private VBox mainPane;
-	// 	@FXML private GridPane classesPane;
+	@FXML private GridPane classesPane;
 		@FXML private TextField class1Title;
 		@FXML private ComboBox<String> class1Grade;
 		@FXML private TextField class1Credits;
@@ -35,23 +35,23 @@ public class GpaController implements Initializable {
 		@FXML private TextField currentCredits;
 		@FXML private Label currentCreditsError;
 
-	// 	@FXML private VBox calcPane;
+		@FXML private HBox calcPane;
 			@FXML private Label gpaOverall;
 			@FXML private Button resetButton;
 	//
 
 	public GpaController(){
-		grades.add("A+");
-		grades.add("A");
-		grades.add("A-");
-		grades.add("B+");
-		grades.add("B");
-		grades.add("B-");
-		grades.add("C+");
-		grades.add("C");
-		grades.add("C-");
-		grades.add("D+");
-		grades.add("F");
+		gradesOptions.add("A+");
+		gradesOptions.add("A");
+		gradesOptions.add("A-");
+		gradesOptions.add("B+");
+		gradesOptions.add("B");
+		gradesOptions.add("B-");
+		gradesOptions.add("C+");
+		gradesOptions.add("C");
+		gradesOptions.add("C-");
+		gradesOptions.add("D+");
+		gradesOptions.add("F");
 	}
 
 	@Override
@@ -59,17 +59,48 @@ public class GpaController implements Initializable {
 		classes.add(new Class(class1Title, class1Grade, class1Credits, class1Points));
 		classes.add(new Class(class2Title, class2Grade, class2Credits, class2Points));
 
+		for(int i=3; i<8; i++){
+			TextField title = new TextField(i+"");
+			title.setId("class"+i+"Title");
+
+			Pane gradeContainer = new Pane();
+			gradeContainer.getStyleClass().addAll("gradeColumn");
+
+			ComboBox<String> gradeDropdown = new ComboBox<String>();
+			gradeDropdown.setItems(FXCollections.observableArrayList(gradesOptions));
+			gradeDropdown.setValue(gradesOptions.get(0));
+			gradeContainer.getChildren().addAll(gradeDropdown);
+
+			TextField credits = new TextField(3+"");
+			credits.setId("class"+i+"Credits");
+			credits.getStyleClass().addAll("creditsColumn");
+
+			Pane qualityPointsContainer = new Pane();
+			qualityPointsContainer.getStyleClass().addAll("qualityPointsColumn");
+			
+			Label qualityPoints = new Label();
+			qualityPoints.setId("class"+i+"Points");
+			qualityPointsContainer.getChildren().addAll(qualityPoints);
+
+			classesPane.add(title, 0, i);
+			classesPane.add(gradeContainer, 1, i);
+			classesPane.add(credits, 2, i);
+			classesPane.add(qualityPointsContainer, 3, i);
+
+			classes.add(new Class(title, gradeDropdown, credits, qualityPoints));
+		}
+
+		//Register event handlers & listeners
 		for(int i=0; i<classes.size(); i++){
 			Class currentClass = classes.get(i);
-			currentClass.grade.setItems(FXCollections.observableArrayList(grades));
-			currentClass.grade.setValue(grades.get(0));
+			currentClass.grade.setItems(FXCollections.observableArrayList(gradesOptions));
+			currentClass.grade.setValue(gradesOptions.get(0));
 
 			currentClass.grade.setOnAction(e -> validateAndCalculateClass(currentClass));
 			
 			currentClass.credits.focusedProperty().addListener(new ClassTextFieldListener(currentClass));
 			currentClass.credits.setOnAction(e -> validateAndCalculateClass(currentClass));
 
-			//Only allow integer credits
 			currentClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(currentClass.credits));
 		}
 
@@ -138,7 +169,7 @@ public class GpaController implements Initializable {
 
 		for(Class c : classes){
 			c.title.setText("");
-			c.grade.setValue(grades.get(0));
+			c.grade.setValue(gradesOptions.get(0));
 			c.credits.setText("");
 			c.qualityPointsLabel.setText("");
 		}
@@ -177,7 +208,7 @@ public class GpaController implements Initializable {
 			this.textField = textField;
 		}
 
-		@Override
+		@Override		//Only allow positive integers
 		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 			if (!newValue.matches("\\d*")) {
 				textField.setText(newValue.replaceAll("\\D", ""));
