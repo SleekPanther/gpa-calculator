@@ -41,4 +41,6 @@ gridPane borders -->
 
 	<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton' />
 
+	<Button text='Add Another Class' fx:id='addClassButton' styleClass='buttons' onAction='#handleAddClassButton' />
+
 </VBox>

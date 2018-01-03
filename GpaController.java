@@ -140,6 +140,11 @@ public class GpaController implements Initializable {
 		newClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(newClass.credits));
 	}
 
+	public void handleAddClassButton(ActionEvent event){
+		Class newClass = addClass(nextFreeClassRow++);
+		registerEventHandlers(newClass);
+	}
+
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
 	public void validateAndCalculateClass(Class classObj){
 		//Validate current class & only print error for current class (avoids printing a ton of errors at the beginning)
