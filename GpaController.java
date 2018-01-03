@@ -20,6 +20,10 @@ public class GpaController implements Initializable {
 	private ArrayList<String> gradesOptions = new ArrayList<String>();
 	private ArrayList<Class> classes = new ArrayList<Class>();
 
+	private final int INITIAL_NUMBER_OF_CLASSES = 8;
+	private final int ROW_OFFSET = 1;	//Row 1 defined in FXML for column headers
+	private int nextFreeClassRow;	//next available row to insert a class
+
 	// @FXML private VBox mainPane;
 	@FXML private GridPane classesPane;
 		@FXML private TextField class1Title;
@@ -58,51 +62,11 @@ public class GpaController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		int rowOffset = 1;
-		for(int i=0+rowOffset; i<8+rowOffset; i++){
-			TextField title = new TextField();
-			title.setId("class"+i+"Title");
-
-			Pane gradeContainer = new Pane();
-			gradeContainer.getStyleClass().addAll("gradeColumn");
-
-			ComboBox<String> gradeDropdown = new ComboBox<String>();
-			gradeDropdown.setItems(FXCollections.observableArrayList(gradesOptions));
-			gradeDropdown.setValue(gradesOptions.get(0));
-			gradeContainer.getChildren().addAll(gradeDropdown);
-
-			TextField credits = new TextField();
-			credits.setId("class"+i+"Credits");
-			credits.getStyleClass().addAll("creditsColumn");
-
-			Pane qualityPointsContainer = new Pane();
-			qualityPointsContainer.getStyleClass().addAll("qualityPointsColumn");
-			
-			Label qualityPoints = new Label();
-			qualityPoints.setId("class"+i+"Points");
-			qualityPointsContainer.getChildren().addAll(qualityPoints);
-
-			classesPane.add(title, 0, i);
-			classesPane.add(gradeContainer, 1, i);
-			classesPane.add(credits, 2, i);
-			classesPane.add(qualityPointsContainer, 3, i);
-
-			classes.add(new Class(title, gradeDropdown, credits, qualityPoints));
+		for(int row=0+ROW_OFFSET; row<INITIAL_NUMBER_OF_CLASSES+ROW_OFFSET; row++){
+			Class newClass = addClass(row);
+			registerEventHandlers(newClass);
 		}
-
-		//Register event handlers & listeners
-		for(int i=0; i<classes.size(); i++){
-			Class currentClass = classes.get(i);
-			currentClass.grade.setItems(FXCollections.observableArrayList(gradesOptions));
-			currentClass.grade.setValue(gradesOptions.get(0));
-
-			currentClass.grade.setOnAction(e -> validateAndCalculateClass(currentClass));
-			
-			currentClass.credits.focusedProperty().addListener(new ClassTextFieldListener(currentClass));
-			currentClass.credits.setOnAction(e -> validateAndCalculateClass(currentClass));
-
-			currentClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(currentClass.credits));
-		}
+		nextFreeClassRow = INITIAL_NUMBER_OF_CLASSES + ROW_OFFSET + 1;
 
 		//Only allow decimal numbers
 		currentGPA.textProperty().addListener(new ChangeListener<String>() {
@@ -128,6 +92,52 @@ public class GpaController implements Initializable {
 
 
 		Platform.runLater(() -> classes.get(0).credits.requestFocus());		//Request focus must be AFTER he FXML is finished loading
+	}
+
+	private Class addClass(int row){
+		TextField title = new TextField();
+		title.setId("class"+row+"Title");
+
+		Pane gradeContainer = new Pane();
+		gradeContainer.getStyleClass().addAll("gradeColumn");
+
+		ComboBox<String> gradeDropdown = new ComboBox<String>();
+		gradeDropdown.setItems(FXCollections.observableArrayList(gradesOptions));
+		gradeDropdown.setValue(gradesOptions.get(0));
+		gradeContainer.getChildren().addAll(gradeDropdown);
+
+		TextField credits = new TextField();
+		credits.setId("class"+row+"Credits");
+		credits.getStyleClass().addAll("creditsColumn");
+
+		Pane qualityPointsContainer = new Pane();
+		qualityPointsContainer.getStyleClass().addAll("qualityPointsColumn");
+		
+		Label qualityPoints = new Label();
+		qualityPoints.setId("class"+row+"Points");
+		qualityPointsContainer.getChildren().addAll(qualityPoints);
+
+		classesPane.add(title, 0, row);
+		classesPane.add(gradeContainer, 1, row);
+		classesPane.add(credits, 2, row);
+		classesPane.add(qualityPointsContainer, 3, row);
+
+		Class newClass = new Class(title, gradeDropdown, credits, qualityPoints);
+		classes.add(newClass);
+
+		return newClass;
+	}
+
+	private void registerEventHandlers(Class newClass){
+		newClass.grade.setItems(FXCollections.observableArrayList(gradesOptions));
+		newClass.grade.setValue(gradesOptions.get(0));
+
+		newClass.grade.setOnAction(e -> validateAndCalculateClass(newClass));
+		
+		newClass.credits.focusedProperty().addListener(new ClassTextFieldListener(newClass));
+		newClass.credits.setOnAction(e -> validateAndCalculateClass(newClass));
+
+		newClass.credits.textProperty().addListener(new PositiveIntegerTextFieldListener(newClass.credits));
 	}
 
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
