@@ -8,7 +8,7 @@ public class GpaModel {
 	private DecimalFormat numberFormatter = new DecimalFormat("0.00");
 
 	private final int GPA_UPPER_BOUND = 4;
-	
+
 	private HashMap<String, Double> letterGradeToNumber = new HashMap<String, Double>();
 
 	private double gpaOverall;
@@ -26,6 +26,7 @@ public class GpaModel {
 		letterGradeToNumber.put("C-", 1.67);
 		letterGradeToNumber.put("D+", 1.33);
 		letterGradeToNumber.put("D", 1.0);
+		letterGradeToNumber.put("D-", .67);
 		letterGradeToNumber.put("F", 0.0);
 	}
 

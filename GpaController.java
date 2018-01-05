@@ -57,6 +57,8 @@ public class GpaController implements Initializable {
 		gradesOptions.add("C");
 		gradesOptions.add("C-");
 		gradesOptions.add("D+");
+		gradesOptions.add("D");
+		gradesOptions.add("D-");
 		gradesOptions.add("F");
 	}
 
