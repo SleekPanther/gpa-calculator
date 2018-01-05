@@ -233,7 +233,9 @@ public class GpaController implements Initializable {
 
 		gpaOverall.setText("0.00");
 
-		classes.get(0).credits.requestFocus();
+		if(!classes.isEmpty()){
+			classes.get(0).credits.requestFocus();
+		}
 	}
 
 
