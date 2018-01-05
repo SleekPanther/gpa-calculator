@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javafx.scene.control.TextField;
 import java.text.DecimalFormat;
 
@@ -36,16 +34,6 @@ public class GpaModel {
 			errorText="Error: GPA can't be > 4.0";
 		}
 		return errorText;
-	}
-
-	public static boolean isNumeric(String number){
-		try{
-			Double.parseDouble(number);
-		}
-		catch(NumberFormatException e){
-			return false;
-		}
-		return true;
 	}
 
 	public static boolean isEmptyString(String input){
