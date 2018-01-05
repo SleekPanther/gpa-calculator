@@ -26,27 +26,16 @@ public class GpaController implements Initializable {
 	private final int ROW_OFFSET = 1;	//Row 1 defined in FXML for column headers
 	private int nextFreeClassRow = ROW_OFFSET;	//next available row to insert a class
 
-	// @FXML private VBox mainPane;
 	@FXML private GridPane classesPane;
-		@FXML private TextField class1Title;
-		@FXML private ComboBox<String> class1Grade;
-		@FXML private TextField class1Credits;
-		@FXML private Label class1Points;
 
-		@FXML private TextField class2Title;
-		@FXML private ComboBox<String> class2Grade;
-		@FXML private TextField class2Credits;
-		@FXML private Label class2Points;
+	@FXML private TextField currentGPA;
+	@FXML private Label currentGPAError;
+	@FXML private TextField currentCredits;
+	@FXML private Label currentCreditsError;
 
-		@FXML private TextField currentGPA;
-		@FXML private Label currentGPAError;
-		@FXML private TextField currentCredits;
-		@FXML private Label currentCreditsError;
+	@FXML private Button addClassButton;
 
-		@FXML private Button addClassButton;
-
-		@FXML private Label gpaOverall;
-		@FXML private Button resetButton;
+	@FXML private Label gpaOverall;
 
 	public GpaController(){
 		gradesOptions.add("A+");
@@ -115,18 +104,16 @@ public class GpaController implements Initializable {
 		gradeContainer.getChildren().addAll(gradeDropdown);
 
 		TextField credits = new TextField();
-		credits.setId("class"+row+"Credits");
 		credits.getStyleClass().addAll("creditsColumn");
 
 		Pane qualityPointsContainer = new Pane();
 		qualityPointsContainer.getStyleClass().addAll("qualityPointsColumn");
 		
 		Label qualityPoints = new Label();
-		qualityPoints.setId("class"+row+"Points");
 		qualityPointsContainer.getChildren().addAll(qualityPoints);
 
 		Button removeButton = new Button("Remove");
-		removeButton.getStyleClass().addAll("removeColumn", "removeButton");
+		removeButton.getStyleClass().addAll("removeColumn");
 		removeButton.setFocusTraversable(false);
 
 		classesPane.add(title, 0, row);
