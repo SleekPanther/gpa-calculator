@@ -1,40 +1,8 @@
 # GPA Calculator
-A GPA calculator in Java attempting to use the **Model View Controller** (MVC) pattern.
+A GPA calculator in Java attempting to use the [**Model View Controller** (MVC) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
 ## Features
 
-
-## Feature Goals
-- calc gpa for any number of classes per semester (or just 8 predefined)
-- given a current GPA (with credits & hours), determine new gpa by adding new classes
-- gui to add multiple classes
-  - `addNewClass(Scene/Pane whereItemAppearsOnScreen)`
-    - dynamically update gui to add new boxes
-  - `updateClass()` ? maybe unnecessary
-  - `moveUp()` / `moveDown()` maybe drag & drop, but arrows to reorder
-    - must fix ArrayList of classes
-- `calculateGpa()`    button / `Enter/Tab keys`
-  - just get values from existing text fields
-  - checkboxes to **include class in calculation**
-  - loop through ArrayList of classes & call `hasValidValues()`
-- **`Class` object extends Pane somehow**
-  - **gui object & txt fields part of it**  
-  fields CAN have invalid numbers in them, but not used & err message printed
-  - bind text field value to objecy's field
-  - fields for credits, gpa hours, grade, letter grade, ect
-  - letter grade based on `Map` with cutoffs
-    - switch statements / else if() for descending grades
-  - `hasValidValues()` calls multiple validation methods
-    - `validateAndPrintErrors()`
-    - `isNumeric()` ==> pass argument & do exception handling
-      - print error if error found
-    - **static** `isValidGrade()`
-      - number in range
-- save inputs to txt file  
-somehow make it hidden/unreadable
-- sort by best gpa? / contributing gpa
-- desired gpa & calculate for current classes
-- 2nd tab for formula explanation?
 
 ## References
 - [JavaFX Java GUI Tutorial - 31 - Introduction to FXML](https://youtu.be/K7BOH-Ll8_g) Bucky FXML
