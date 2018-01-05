@@ -16,12 +16,4 @@ public class Class{
 		this.qualityPointsLabel=qualityPointsLabel;
 		this.removeButton=removeButton;
 	}
-	
-	public String getGrade(){
-		return grade.getValue();
-	}
-	
-	public String getCredits(){
-		return credits.getText();
-	}
 }

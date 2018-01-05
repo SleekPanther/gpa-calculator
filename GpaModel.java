@@ -53,14 +53,14 @@ public class GpaModel {
 
 
 	public boolean isClassValid(Class classObj){
-		if(isEmptyString(classObj.getCredits())){
+		if(isEmptyString(classObj.credits.getText())){
 			return false;
 		}
 		return true;
 	}
 
 	public void setQualityPoints(Class classObj){
-		double qualityPoints = Integer.parseInt(classObj.getCredits()) * letterGradeToNumber.get(classObj.getGrade());
+		double qualityPoints = Integer.parseInt(classObj.credits.getText()) * letterGradeToNumber.get(classObj.grade.getValue());
 		classObj.qualityPointsLabel.setText(numberFormatter.format(GpaController.round(qualityPoints, 2)));
 	}
 
@@ -70,8 +70,8 @@ public class GpaModel {
 		for(Class c : classes){
 			//Ignore invalid classes from the calculation
 			if(isClassValid(c)){
-				totalQualityPoints += Double.parseDouble(c.getCredits()) * letterGradeToNumber.get(c.getGrade());
-				totalCredits += Integer.parseInt(c.getCredits());
+				totalQualityPoints += Double.parseDouble(c.credits.getText()) * letterGradeToNumber.get(c.grade.getValue());
+				totalCredits += Integer.parseInt(c.credits.getText());
 			}
 		}
 		if(!isEmptyString(currentGPA.getText()) && !isEmptyString(currentCredits.getText()) && getGPAErrorIfInvalid(currentGPA.getText()).equals("")){
