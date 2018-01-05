@@ -192,9 +192,11 @@ public class GpaController implements Initializable {
 		//Validate current class & only print error for current class (avoids printing a ton of errors at the beginning)
 		if(model.isClassValid(classObj)){
 			model.setQualityPoints(classObj);
+			classObj.qualityPointsLabel.getStyleClass().removeAll("errorLabel");
 		}
 		else{
 			classObj.qualityPointsLabel.setText("Credits can't be empty");
+			classObj.qualityPointsLabel.getStyleClass().addAll("errorLabel");
 		}
 		
 		calcGpa();
