@@ -3,7 +3,6 @@ import javafx.fxml.*;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -16,6 +15,8 @@ import java.text.DecimalFormat;
 public class GpaController implements Initializable {
 	private static final int DECIMAL_PRECISION = 2;		//how many decimals to round to
 	private DecimalFormat numberFormatter = new DecimalFormat("0.00");
+
+	private static final int WINDOW_WIDTH = 591;	//CSS is 571
 
 	private GpaModel model = new GpaModel();
 
@@ -169,14 +170,19 @@ public class GpaController implements Initializable {
 
 		nextFreeClassRow--;		//decrement next available row since 1 was removed
 		
-		((Stage)classesPane.getScene().getWindow()).sizeToScene();
+		resizeWindow();
 	}
 
 	public void handleAddClassButton(ActionEvent event){
 		Class newClass = addClass(nextFreeClassRow);		//add new class at current available row
 		registerEventHandlers(newClass);
 		
+		resizeWindow();
+	}
+
+	private void resizeWindow(){
 		((Stage)classesPane.getScene().getWindow()).sizeToScene();
+		((Stage)classesPane.getScene().getWindow()).setWidth(WINDOW_WIDTH);
 	}
 
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
