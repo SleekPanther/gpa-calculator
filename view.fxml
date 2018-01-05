@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<VBox fx:controller='GpaController' fx:id='mainPane' stylesheets='css/viewCss.css' xmlns='http://javafx.com/javafx/8' xmlns:fx='http://javafx.com/fxml' ><!-- package/path to the controller -->
+<VBox fx:controller='GpaController' fx:id='mainPane' stylesheets='css/style.css' xmlns='http://javafx.com/javafx/8' xmlns:fx='http://javafx.com/fxml' ><!-- package/path to the controller -->
 
 	<Label text="GPA Calculator" fx:id='programTitle'/>
 

@@ -6,7 +6,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.*;
 
 public class GpaCalculator extends Application {
-	private static final String guiFxmlFileName = "ui.fxml";
+	private static final String guiFxmlFileName = "view.fxml";
 	// private int windowHeight = 600;
 	// private int windowWidth = 500;
 
