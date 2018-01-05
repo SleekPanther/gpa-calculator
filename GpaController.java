@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -177,14 +178,18 @@ public class GpaController implements Initializable {
 			classes.get(i).id = classes.get(i).id -1;
 		}
 
-		classes.remove(row-1);		//Remove from class list (-1 offset since GUI starts at row=1 & arraus count from 0)
+		classes.remove(row-1);		//Remove from class list (-1 offset since GUI starts at row=1 & arrays count from 0)
 
 		nextFreeClassRow--;		//decrement next available row since 1 was removed
+		
+		((Stage)classesPane.getScene().getWindow()).sizeToScene();
 	}
 
 	public void handleAddClassButton(ActionEvent event){
 		Class newClass = addClass(nextFreeClassRow);		//add new class at current available row
 		registerEventHandlers(newClass);
+		
+		((Stage)classesPane.getScene().getWindow()).sizeToScene();
 	}
 
 	//Validates the class currently in focus (class that the grade/credits belong to) & calculates GPA if all classes are valid (setting appropriate error labels)
@@ -214,7 +219,7 @@ public class GpaController implements Initializable {
 		else if(!GpaModel.isEmptyString(currentGPA.getText()) && GpaModel.isEmptyString(currentCredits.getText())){
 			currentCreditsError.setText("Current Credits required");
 		}
-		else if(!GpaModel.isEmptyString(currentGPA.getText())){
+		else if(!GpaModel.isEmptyString(currentGPA.getText())){				//Else check number is in bounds
 			currentGPAError.setText(model.getGPAErrorIfInvalid(currentGPA.getText()));
 		}
 
