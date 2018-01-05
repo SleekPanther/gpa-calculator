@@ -42,9 +42,10 @@ public class GpaController implements Initializable {
 		@FXML private TextField currentCredits;
 		@FXML private Label currentCreditsError;
 
-		@FXML private HBox calcPane;
-			@FXML private Label gpaOverall;
-			@FXML private Button resetButton;
+		@FXML private Button addClassButton;
+
+		@FXML private Label gpaOverall;
+		@FXML private Button resetButton;
 
 	public GpaController(){
 		gradesOptions.add("A+");
@@ -79,6 +80,8 @@ public class GpaController implements Initializable {
 			}
 		});
 
+		addClassButton.setFocusTraversable(false);
+
 		currentCredits.textProperty().addListener(new PositiveIntegerTextFieldListener(currentCredits));
 
 		currentGPA.setOnAction(e -> calcGpa());
@@ -99,13 +102,14 @@ public class GpaController implements Initializable {
 		nextFreeClassRow++;
 
 		TextField title = new TextField();
-		title.setId("class"+row+"Title");
+		title.getStyleClass().addAll("titleColumn");
 
 		Pane gradeContainer = new Pane();
 		gradeContainer.getStyleClass().addAll("gradeColumn");
 
 		ComboBox<String> gradeDropdown = new ComboBox<String>();
 		gradeDropdown.setItems(FXCollections.observableArrayList(gradesOptions));
+		gradeDropdown.setVisibleRowCount(gradesOptions.size());
 		gradeDropdown.setValue(gradesOptions.get(0));
 		gradeContainer.getChildren().addAll(gradeDropdown);
 
@@ -121,7 +125,7 @@ public class GpaController implements Initializable {
 		qualityPointsContainer.getChildren().addAll(qualityPoints);
 
 		Button removeButton = new Button("Remove");
-		removeButton.getStyleClass().addAll("removeColumn");
+		removeButton.getStyleClass().addAll("removeColumn", "removeButton");
 		removeButton.setFocusTraversable(false);
 
 		classesPane.add(title, 0, row);

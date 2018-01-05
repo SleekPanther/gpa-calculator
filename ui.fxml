@@ -14,17 +14,24 @@
 
 <VBox fx:controller='GpaController' fx:id='mainPane' stylesheets='css/viewCss.css' xmlns='http://javafx.com/javafx/8' xmlns:fx='http://javafx.com/fxml' ><!-- package/path to the controller -->
 
-<!-- change to grid pane so headers line up
-gridPane borders -->
-		
-	<GridPane fx:id='classesPane' styleClass='grid'>
-		<Label text='Title (optional)' GridPane.rowIndex='0' GridPane.columnIndex='0' />
-		<Label text='Grade' GridPane.rowIndex='0' GridPane.columnIndex='1' styleClass='gradeColumn'/>
-		<Label text='Credits' GridPane.rowIndex='0' GridPane.columnIndex='2' styleClass='creditsColumn'/>
-		<Label text='Quality Points' GridPane.rowIndex='0' GridPane.columnIndex='3' styleClass='qualityPointsColumn'/>
+	<Label text="GPA Calculator" fx:id='programTitle'/>
+
+	<GridPane fx:id='classesPane'>
+		<Label fx:id='titleHeader' text='Title (optional)' GridPane.rowIndex='0' GridPane.columnIndex='0'/>
+		<Label fx:id='gradeHeader' text='Grade' GridPane.rowIndex='0' GridPane.columnIndex='1' styleClass='gradeColumn'/>
+		<Label fx:id='creditsHeader' text='Credits' GridPane.rowIndex='0' GridPane.columnIndex='2' styleClass='creditsColumn'/>
+		<Label fx:id='qualityPointsHeader' text='Quality Points' GridPane.rowIndex='0' GridPane.columnIndex='3' styleClass='qualityPointsColumn'/>
 	</GridPane>
 
-	<GridPane fx:id='existingGPA'>
+	<HBox>
+		<Pane fx:id='addClassButtonLeftSpacer'/>
+		<VBox>
+			<Pane fx:id='addClassButtonTopSpacer'/>
+			<Button text='Add Another Class' fx:id='addClassButton' styleClass='buttons' onAction='#handleAddClassButton'/>
+		</VBox>
+	</HBox>
+
+	<GridPane fx:id='existingGPAContainer'>
 		<Label text='Include Current GPA (optional)' GridPane.rowIndex='0' GridPane.columnIndex='0'/>
 		<TextField fx:id='currentGPA' GridPane.rowIndex='0' GridPane.columnIndex='1'/>
 		<Label fx:id='currentGPAError' styleClass='errorLabel' GridPane.rowIndex='0' GridPane.columnIndex='2'/>
@@ -34,13 +41,11 @@ gridPane borders -->
 		<Label fx:id='currentCreditsError' styleClass='errorLabel' GridPane.rowIndex='1' GridPane.columnIndex='2'/>
 	</GridPane>
 
-	<HBox fx:id='calcPane'>
+	<HBox fx:id='gpaPane'>
 		<Label text='GPA:' fx:id='gpaLabel'/>
-		<Label text='0.00' fx:id='gpaOverall' />
+		<Label text='0.00' fx:id='gpaOverall'/>
+		<Pane fx:id='resetButtonSpacer'/>
+		<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton'/>
 	</HBox>
-
-	<Button text='Reset' fx:id='resetButton' styleClass='buttons' onAction='#handleResetButton' />
-
-	<Button text='Add Another Class' fx:id='addClassButton' styleClass='buttons' onAction='#handleAddClassButton' />
 
 </VBox>

@@ -1,35 +1,52 @@
 /*------------------View CSS---------------------*/
 #mainPane{
-	-fx-background-color: orange;
-	-fx-pref-width: 800;
-	-fx-min-width: 800;
-	-fx-max-width: 800;
+	-fx-background-color: #ecf0f1;
+	-fx-pref-width: 590;
+	-fx-min-width: 590;
+	-fx-max-width: 590;
 }
 
-.grid {
-	
+#programTitle{
+	-fx-font-weight: bold;
+	-fx-font-size: 30;
+	-fx-padding: 0 0 0 5;
 }
 
-.grid > *{
-	-fx-pref-width: 150;
-	-fx-min-width: 150;
-	-fx-max-width: 150;
+#classesPane{
+	-fx-background-color: #a5dce9;
+}
 
+#classesPane > *{
 	-fx-border-width: 1;
 	-fx-border-color: black;
 	-fx-border-style: solid;
 }
 
+#titleHeader, #gradeHeader, #creditsHeader, #qualityPointsHeader{
+	-fx-font-weight: bold;
+	-fx-text-alignment: center;
+}
+
+#titleHeader, #gradeHeader, #qualityPointsHeader{
+	-fx-padding: 0 0 0 10;
+}
+
+.titleColumn, #titleHeader{
+	-fx-pref-width: 150;
+	-fx-min-width: 150;
+	-fx-max-width: 150;
+}
+
 .gradeColumn, .gradeColumn ComboBox{
-	-fx-pref-width: 74;
-	-fx-min-width: 74;
-	-fx-max-width: 74;
+	-fx-pref-width: 73;
+	-fx-min-width: 73;
+	-fx-max-width: 73;
 }
 
 .creditsColumn{
-	-fx-pref-width: 52;
-	-fx-min-width: 52;
-	-fx-max-width: 52;
+	-fx-pref-width: 54;
+	-fx-min-width: 54;
+	-fx-max-width: 54;
 }
 
 .qualityPointsColumn{
@@ -44,48 +61,50 @@
 	-fx-max-width: 80;
 }
 
-#classesPane{
-	-fx-background-color: yellow;
+#addClassButtonLeftSpacer{
+	-fx-pref-width: 437;
+	-fx-min-width: 437;
+	-fx-max-width: 437;
 }
 
-.title{
-	-fx-pref-width: 240;
-	-fx-min-width: 240;
-	-fx-max-width: 240;
+#addClassButtonTopSpacer{
+	-fx-pref-height: 8;
+	-fx-min-height: 8;
+	-fx-max-height: 8;
 }
 
-TextField{
+#existingGPAContainer Label{
+	-fx-padding: 0 5 0 5;
+	-fx-font-weight: bold;
+}
+
+#existingGPAContainer TextField{
 	-fx-pref-width: 50;
 	-fx-min-width: 50;
 	-fx-max-width: 50;
 }
 
-#calcGpaOverallButton{
-	
-}
-
-#gpaLabel,  #gpaOverall{
-	-fx-font-size: 20px;
+#gpaLabel, #gpaOverall{
+	-fx-padding: 0 6 0 6;
+	-fx-font-size: 24;
 	-fx-font-weight: bold;
 }
 
 #gpaLabel{
-	-fx-background-color: black;
+	-fx-background-color: #2a53b2;
 	-fx-text-fill: white;
-	-fx-pref-width: 70;
-	-fx-min-width: 70;
-	-fx-max-width: 70;
 }
 
 #gpaOverall{
-	-fx-padding: 0 0 0 10px;
-	-fx-background-color: lightgreen;
-	-fx-pref-width: 60;
-	-fx-min-width: 60;
-	-fx-max-width: 60;
+	-fx-background-color: #0f0;
 }
 
-.buttons{
-	-fx-text-fill: blue;
+#resetButtonSpacer{
+	-fx-pref-width: 30;
+	-fx-min-width: 30;
+	-fx-max-width: 30;
 }
 
+.errorLabel{
+	-fx-text-fill: red;
+}
