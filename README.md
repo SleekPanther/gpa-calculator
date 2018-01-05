@@ -2,7 +2,7 @@
 A GPA calculator in Java attempting to use the [**Model View Controller** (MVC) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
 ## Features
-
+**explanation text for rounding, entering existing GPA with 2 decimals may yield a rounded down answer**
 
 ## References
 - [JavaFX Java GUI Tutorial - 31 - Introduction to FXML](https://youtu.be/K7BOH-Ll8_g) Bucky FXML
@@ -40,6 +40,10 @@ but only for TextField, not another label
 - 
 - [How to Use the Focus Subsystem](https://docs.oracle.com/javase/tutorial/uiswing/misc/focus.html) Meant for Swing, but similar in JavaFX
 - [Remove a row from a GridPane](https://stackoverflow.com/a/40517410/8050097) Remove row from GridPane method
+-
+- [StackOverflow - JavaFX getting scene from a controller](https://stackoverflow.com/a/26061123/8050097) Get containing `Scene` from GUI object
+- [StackOverflow - JavaFX: How to get stage from controller during initialization?](https://stackoverflow.com/a/31686775/8050097) Get containing `Stage` from GUI object
+- **[Java2s - stage.sizeToScene()](http://www.java2s.com/Code/Java/JavaFX/sizeToScene.htm) Rezie stage to scene size**
 -  
 - **[Youtube - MVC Java Tutorial](http://www.newthinktank.com/2013/02/mvc-java-tutorial/) *Great video*, provided the main motivation to use MVC, but it uses *Java swing* and I had to adapt it to *JavaFX***
   - [UI Control Sample - JavaFX Tutorials and Documentation](https://docs.oracle.com/javafx/2/ui_controls/ButtonSample.java.html) Finally just copied the stuff inside `setOnAction()` to separate inner class in **Controller**
