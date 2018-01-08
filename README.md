@@ -1,8 +1,40 @@
 # GPA Calculator
-A GPA calculator in Java attempting to use the [**Model View Controller** (MVC) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+A GPA calculator in JavaFX attempting to use the [**Model View Controller** (MVC) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+
+![](readme-pictures/demo.gif)
 
 ## Features
-**explanation text for rounding, entering existing GPA with 2 decimals may yield a rounded down answer**
+- **Dynamically recalculates GPA when any information is changed**
+- Calculate GPA for specific classes
+- Add and remove classes
+- Optionally include your existing GPA to see how the current semester affects it
+- Input validation
+
+## GPA Explanation
+A GPA is simply a weighted average. You can see more examples on [UVM's help page](https://www.uvm.edu/~rgweb/?Page=gradesandtranscripts/g_gpa.html&SM=g_menu.html)  
+The calculate GPA, you multiply the number of credits by the numerical grade for a class and divide by the total credits
+
+## Grade Equivalents
+|Grade|Calue|
+|-|-|
+|A+|4.0|
+|A|4.0|
+|A-|3.67|
+|B+|3.33|
+|B|3.0|
+|B-|2.67|
+|C+|2.33|
+|C|2.0|
+|C-|1.67|
+|D+|1.33|
+|D|1.0|
+|D-|0.67|
+|F|0.0|
+
+## Rounding Issues
+When including your current GPA, this program may yield a total GPA that's off by 0.01. This is because your school may round up or down when calculation your overall GPA and including your Overall GPA may be slightly different than entering all the classes individually.
+
+UVM rounds down when calculating your overall GPA. Thus 3.5995 is just 3.59 and not 3.60. This program also reflects that convention even if it's not mathematically equivalent.
 
 ## References
 - [JavaFX Java GUI Tutorial - 31 - Introduction to FXML](https://youtu.be/K7BOH-Ll8_g) Bucky FXML
