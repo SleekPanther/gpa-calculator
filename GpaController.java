@@ -172,6 +172,8 @@ public class GpaController implements Initializable {
 		nextFreeClassRow--;		//decrement next available row since 1 was removed
 		
 		resizeWindow();
+
+		calcGpa();
 	}
 
 	public void handleAddClassButton(ActionEvent event){
