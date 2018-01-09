@@ -1,6 +1,8 @@
 # GPA Calculator
 A GPA calculator in JavaFX attempting to use the [**Model View Controller** (MVC) pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 
+## **[Download Latest Release](https://github.com/SleekPanther/gpa-calculator/releases/latest)**
+
 ![](readme-pictures/demo.gif)
 
 ## Features
