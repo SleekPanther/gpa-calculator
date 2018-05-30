@@ -17,7 +17,7 @@ A GPA is simply a weighted average. You can see more examples on [UVM's help pag
 The calculate GPA, you multiply the number of credits by the numerical grade for a class and divide by the total credits
 
 ## Grade Equivalents
-|Grade|Calue|
+|Grade|Value|
 |-|-|
 |A+|4.0|
 |A|4.0|
